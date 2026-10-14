@@ -1,0 +1,187 @@
+/* ==========================================================================
+   GrowthMed landing page
+
+   Bootstrap handles layout and component styling. This file only:
+   1. defines brand tokens (swap the placeholders when the design arrives)
+   2. maps those tokens onto Bootstrap's CSS variables
+   3. adds the hover / motion polish Bootstrap doesn't ship with
+   ========================================================================== */
+
+
+/* 1. Brand tokens -- PLACEHOLDER values, replace from the design file
+   -------------------------------------------------------------------------- */
+:root {
+  --gm-primary: #0b6e99;
+  --gm-primary-rgb: 11, 110, 153;   /* same color as above, as r, g, b */
+  --gm-primary-dark: #095a7d;       /* hover / pressed state */
+
+  --gm-speed: 200ms;
+  --gm-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+}
+
+
+/* 2. Map tokens onto Bootstrap
+   -------------------------------------------------------------------------- */
+:root {
+  --bs-primary: var(--gm-primary);
+  --bs-primary-rgb: var(--gm-primary-rgb);
+  --bs-link-color-rgb: var(--gm-primary-rgb);
+  --bs-link-hover-color-rgb: 9, 90, 125;   /* keep in sync with --gm-primary-dark */
+
+  /* Typeface: uncomment and set once the design specifies one.
+     (Load the font in <head> first.) */
+  /* --bs-body-font-family: "Your Font", system-ui, sans-serif; */
+}
+
+/* Bootstrap's compiled buttons ignore --bs-primary, so map them explicitly */
+.btn-primary {
+  --bs-btn-bg: var(--gm-primary);
+  --bs-btn-border-color: var(--gm-primary);
+  --bs-btn-hover-bg: var(--gm-primary-dark);
+  --bs-btn-hover-border-color: var(--gm-primary-dark);
+  --bs-btn-active-bg: var(--gm-primary-dark);
+  --bs-btn-active-border-color: var(--gm-primary-dark);
+  --bs-btn-disabled-bg: var(--gm-primary);
+  --bs-btn-disabled-border-color: var(--gm-primary);
+  --bs-btn-focus-shadow-rgb: var(--gm-primary-rgb);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--gm-primary);
+  --bs-btn-border-color: var(--gm-primary);
+  --bs-btn-hover-bg: var(--gm-primary);
+  --bs-btn-hover-border-color: var(--gm-primary);
+  --bs-btn-active-bg: var(--gm-primary-dark);
+  --bs-btn-active-border-color: var(--gm-primary-dark);
+  --bs-btn-disabled-color: var(--gm-primary);
+  --bs-btn-disabled-border-color: var(--gm-primary);
+  --bs-btn-focus-shadow-rgb: var(--gm-primary-rgb);
+}
+
+/* Form focus ring in the brand color */
+.form-control:focus {
+  border-color: var(--gm-primary);
+  box-shadow: 0 0 0 0.25rem rgba(var(--gm-primary-rgb), 0.25);
+}
+
+.nav-link:focus-visible {
+  box-shadow: 0 0 0 0.25rem rgba(var(--gm-primary-rgb), 0.25);
+}
+
+/* Skip link sits above the sticky header (z-index 1020) when focused */
+.skip-link {
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 1030;
+}
+
+/* Anchor jumps land below the sticky navbar */
+html {
+  scroll-padding-top: 5rem;
+}
+
+
+/* 3. Hover and motion polish
+   --------------------------------------------------------------------------
+   Rules of thumb used below:
+   - Hover effects only apply on devices that can hover, so touch screens
+     don't get "stuck" hover states.
+   - Anything that moves is switched off for visitors who ask for reduced
+     motion. Color and shadow changes still apply for them.
+   -------------------------------------------------------------------------- */
+
+/* Nav links: underline slides in (desktop only; the mobile menu stays simple) */
+@media (min-width: 992px) {
+  .navbar .nav-link {
+    position: relative;
+  }
+
+  .navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: var(--bs-nav-link-padding-x);
+    bottom: 0.25rem;
+    height: 2px;
+    background: var(--gm-primary);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  /* Active section (scrollspy) and keyboard focus always show the underline */
+  .navbar .nav-link.active::after,
+  .navbar .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (min-width: 992px) and (hover: hover) {
+  .navbar .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Cards: shadow on hover or keyboard focus (lift is added below) */
+.card-hover:focus-within {
+  box-shadow: var(--bs-box-shadow-lg);
+}
+
+@media (hover: hover) {
+  .card-hover:hover {
+    box-shadow: var(--bs-box-shadow-lg);
+  }
+}
+
+/* Image containers: media scales inside its frame (clipped by overflow-hidden) */
+.hover-zoom__media {
+  width: 100%;
+  height: 100%;
+}
+
+/* Motion: transitions plus the transforms that use them */
+@media (prefers-reduced-motion: no-preference) {
+  #mainNav {
+    transition: box-shadow var(--gm-speed) var(--gm-ease);
+  }
+
+  .navbar .nav-link::after {
+    transition: transform var(--gm-speed) var(--gm-ease);
+  }
+
+  /* Bootstrap's own button transitions, plus transform */
+  .btn {
+    transition:
+      color 0.15s ease-in-out,
+      background-color 0.15s ease-in-out,
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out,
+      transform var(--gm-speed) var(--gm-ease);
+  }
+
+  .card-hover {
+    transition:
+      transform var(--gm-speed) var(--gm-ease),
+      box-shadow var(--gm-speed) var(--gm-ease);
+  }
+
+  .hover-zoom__media {
+    transition: transform 500ms var(--gm-ease);
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+
+  .btn:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-zoom:hover .hover-zoom__media {
+    transform: scale(1.04);
+  }
+}
