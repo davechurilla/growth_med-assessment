@@ -229,9 +229,12 @@ html {
 
 /* White pill on the procedure cards */
 .btn-pill {
-  --bs-btn-hover-color: var(--gm-btn-teal);
-  background: #fff;
-  color: var(--gm-btn-teal);
+  --bs-btn-bg: #fff;
+  --bs-btn-color: var(--gm-btn-teal);
+  --bs-btn-hover-bg: var(--gm-btn-teal);
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-bg: var(--gm-btn-teal);
+  --bs-btn-active-color: #fff;
 }
 
 
@@ -670,9 +673,6 @@ html {
     filter: brightness(0.92);
   }
 
-  .btn-pill:hover {
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
-  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -685,6 +685,9 @@ html {
   }
 
   .btn-pill {
-    transition: box-shadow var(--gm-speed) var(--gm-ease), transform var(--gm-speed) var(--gm-ease);
+    transition:
+      color var(--gm-speed) var(--gm-ease),
+      background-color var(--gm-speed) var(--gm-ease),
+      transform var(--gm-speed) var(--gm-ease);
   }
 }
