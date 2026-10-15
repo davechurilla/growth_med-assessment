@@ -123,6 +123,7 @@ html {
   --gm-ink: #1d1d1b;        /* approximate: body/nav text */
   --gm-phone: #237ba2;      /* nav phone number: darkened from PSD #73bfdc (2.06:1) to 4.74:1 on white */
   --gm-orange-dark: #de5630; /* orange gradient, dark end (from PSD) */
+  --gm-btn-hover: #0679a4;  /* lighter blue hover for the card buttons; white text 4.91:1 */
   --gm-btn-teal: #00537e;   /* "Learn more" button text on teal cards (from PSD) */
   --gm-grad-teal: linear-gradient(200deg, var(--gm-teal), var(--gm-navy));
   --gm-grad-orange: linear-gradient(200deg, var(--gm-orange-light), var(--gm-orange-dark));
@@ -231,9 +232,9 @@ html {
 .btn-pill {
   --bs-btn-bg: #fff;
   --bs-btn-color: var(--gm-btn-teal);
-  --bs-btn-hover-bg: var(--gm-btn-teal);
+  --bs-btn-hover-bg: var(--gm-btn-hover);
   --bs-btn-hover-color: #fff;
-  --bs-btn-active-bg: var(--gm-btn-teal);
+  --bs-btn-active-bg: var(--gm-btn-hover);
   --bs-btn-active-color: #fff;
 }
 
