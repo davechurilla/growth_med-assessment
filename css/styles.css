@@ -709,3 +709,11 @@ html {
       transform var(--gm-speed) var(--gm-ease);
   }
 }
+
+/* The nav phone number is a plain tel: link: no hover underline.
+   (Keyboard focus keeps its underline and ring.) */
+@media (min-width: 992px) and (hover: hover) {
+  .navbar .nav-phone .nav-link:hover:not(:focus-visible)::after {
+    transform: scaleX(0);
+  }
+}
