@@ -464,7 +464,9 @@ h1, h2, h3, h4, h5, h6,
   opacity: 0;
 }
 
-.proc-card:focus-within::before {
+/* Keyboard focus on the button shows the orange state; a mouse click does not
+   leave it stuck (:focus-visible ignores mouse focus) */
+.proc-card:has(.btn-pill:focus-visible)::before {
   opacity: 1;
 }
 
