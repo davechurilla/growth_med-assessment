@@ -263,6 +263,7 @@ html {
 
 .hero__copy {
   padding-bottom: 3rem;
+  text-align: center;       /* centered on phones/tablets, left-aligned from lg up */
 }
 
 .hero__title {
@@ -328,6 +329,7 @@ html {
   .hero__copy {
     padding-top: 9.75rem;
     padding-bottom: 9.6rem;
+    text-align: start;
   }
 
   .hero__media {
@@ -715,5 +717,22 @@ html {
 @media (min-width: 992px) and (hover: hover) {
   .navbar .nav-phone .nav-link:hover:not(:focus-visible)::after {
     transform: scaleX(0);
+  }
+}
+
+/* Social icons: dim slightly on hover */
+.social-link {
+  display: inline-block;
+}
+
+@media (hover: hover) {
+  .social-link:hover {
+    opacity: 0.7;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .social-link {
+    transition: opacity var(--gm-speed) var(--gm-ease);
   }
 }
