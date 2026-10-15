@@ -34,6 +34,16 @@ This project is a development assessment by Dave Churilla, prepared for Steven F
 - The contact form is not connected to a server; it runs in demo mode and says so on screen.
 - Nav links other than Home and Contact point to `#`, since the comp has no other pages.
 
+## Automated checks
+
+Lighthouse (desktop, v13.4.1, run locally by Dave on `index.html`):
+
+| Performance | Accessibility | Best Practices | SEO |
+|---|---|---|---|
+| 97 | 100 | 100 | 100 |
+
+Largest Contentful Paint 1.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.033. The only notes were an unminified stylesheet (no build step by design) and unused JavaScript that came from browser extensions, not the site. Lighthouse covers only the automated accessibility checks, so the trade-offs listed above still apply. A manual keyboard pass and an axe scan are separate from these results.
+
 ## Structure
 
 ```
