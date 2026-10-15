@@ -9,6 +9,16 @@
    ========================================================================== */
 
 
+/* Fallback shown while Oswald loads: Arial scaled to Oswald's narrow width, so
+   headlines wrap the same way before and after the swap (prevents a layout
+   shift). 66% was tested against the hero headline; 62-70% all work. */
+@font-face {
+  font-family: "Oswald Fallback";
+  src: local("Arial"), local("Helvetica");
+  size-adjust: 66%;
+}
+
+
 /* 1. Brand tokens
    -------------------------------------------------------------------------- */
 :root {
@@ -24,7 +34,7 @@
   --gm-field-border: #e4e4e4;       /* form field border (from PSD); 1.27:1, fails 3:1 */
   --gm-field-border-a11y: #8f8f8f;  /* darkened field border, 3.23:1 on white */
 
-  --gm-font-heading: "Oswald", sans-serif;
+  --gm-font-heading: "Oswald", "Oswald Fallback", sans-serif;
   --gm-font-body: "Lato", sans-serif;
   --gm-wrapper: 1200px;             /* client spec: 1200px wide, 30px side padding */
   --gm-wrapper-pad: 30px;
@@ -295,6 +305,7 @@ h1, h2, h3, h4, h5, h6,
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  min-height: 1.75rem;           /* reserve the dots' height so Slick adding them doesn't shift the page */
   margin-bottom: 1.5rem;
 }
 
@@ -312,6 +323,7 @@ h1, h2, h3, h4, h5, h6,
 
 .hero__dots button,
 .hero__pause {
+  display: block;
   position: relative;
   width: 1.75rem;
   height: 1.75rem;

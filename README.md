@@ -41,14 +41,14 @@ Lighthouse v13.4.1, run locally by Dave on `index.html` (served from a local dev
 | | Performance | Accessibility | Best Practices | SEO |
 |---|---|---|---|---|
 | Desktop | 97 | 100 | 100 | 100 |
-| Mobile | 74 | 100 | 96 | 100 |
+| Mobile | 91 | 100 | 100 | 100 |
 
 - **Desktop:** Largest Contentful Paint 1.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.033.
-- **Mobile (simulated slow connection):** First Contentful Paint 2.5s, Largest Contentful Paint 6.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.045. The LCP element is the hero runners image (a 342KB PNG); the page also loads four render-blocking stylesheets and full-size background images on phones. Lighthouse also notes the header logo is low resolution on high-density screens (Best Practices 96).
-- **Not an issue for the site:** unused JavaScript came from browser extensions, and the unminified stylesheet is by design (no build step).
-- **Not yet done:** compressing the runners image (for example WebP with transparency), smaller mobile versions of the background images, and a 2x logo. A manual keyboard pass and an axe scan are separate from these results.
+- **Mobile (simulated slow connection):** First Contentful Paint 1.8s, Largest Contentful Paint 3.0s, Total Blocking Time 0ms, Cumulative Layout Shift 0.103. An earlier mobile run scored 74 with a 6.1s LCP; converting the runners image and both backgrounds to WebP (with JPG/PNG fallbacks) and fetching the runners image early fixed most of it.
+- **After that run:** the layout shift was traced to the web-font swap (the headline wrapped differently before Oswald loaded) and fixed with a size-matched fallback font. In a local browser measurement the shift dropped from about 0.10 to about 0.003; Lighthouse has not been rerun since.
+- **Remaining notes:** four render-blocking stylesheets (Bootstrap, Slick, Google Fonts, the page CSS), a small image-delivery saving on the icons and logo, and a 1x logo. Unused JavaScript in the reports came from browser extensions, and the unminified stylesheet is by design (no build step).
 
-Lighthouse covers only the automated accessibility checks, so the trade-offs listed above still apply.
+Lighthouse covers only the automated accessibility checks, so the trade-offs listed above still apply. A manual keyboard pass and an axe scan are separate from these results.
 
 ## Structure
 
