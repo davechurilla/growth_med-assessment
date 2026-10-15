@@ -5,16 +5,10 @@
   // Leave empty until that is decided; the form will then run in demo mode.
   const FORM_ENDPOINT = '';
 
-  const nav = document.getElementById('mainNav');
   const navMenu = document.getElementById('navMenu');
   const form = document.getElementById('contactForm');
   const submitBtn = document.getElementById('submitBtn');
   const status = document.getElementById('formStatus');
-
-  // Shadow under the sticky navbar once the page has scrolled
-  const updateNavShadow = () => nav.classList.toggle('shadow-sm', window.scrollY > 8);
-  updateNavShadow();
-  window.addEventListener('scroll', updateNavShadow, { passive: true });
 
   // Close the mobile menu after a link is chosen
   navMenu.addEventListener('click', (event) => {
@@ -76,7 +70,4 @@
       submitBtn.disabled = false;
     }
   });
-
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
 })();
