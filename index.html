@@ -8,7 +8,7 @@
   <!-- TODO: favicon and Open Graph / social tags once copy and assets are final -->
 
   <!-- The runners image is the largest above-the-fold element: fetch it early -->
-  <link rel="preload" as="image" href="assets/runners.png" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="assets/runners.webp" fetchpriority="high">
 
   <!-- Fonts specified by the client: Oswald (headings, nav) and Lato (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -90,7 +90,10 @@
             <a class="btn btn-cta" href="#">Read more</a>
           </div>
           <div class="col-lg-6 hero__media">
-            <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side" width="582" height="540" fetchpriority="high" decoding="async">
+            <picture>
+              <source srcset="assets/runners.webp" type="image/webp">
+              <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side" width="582" height="540" fetchpriority="high" decoding="async">
+            </picture>
           </div>
         </div>
       </div>
