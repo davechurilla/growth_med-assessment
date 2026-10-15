@@ -18,6 +18,8 @@ This project is a development assessment by Dave Churilla, prepared for Steven F
 **Choices that differ from the brief**
 - The procedure cards use CSS `linear-gradient()` backgrounds, not a repeating background image. It needs no extra request, stays crisp at any size, and keeps the colors in CSS variables. Their orange hover state is a second gradient layer faded in.
 
+- The wrapper is read as 1200px wide *including* the 30px side padding (1140px of content), which matches the comp. Verified in the browser at a 1920px viewport; `box-sizing: border-box` is applied globally.
+
 **Built to the comp, with accessibility trade-offs**
 - White text on the orange gradient buttons (Read more, Submit) measures 2.5-3.8:1, under the 4.5:1 minimum. White body text on the orange hover card is about 3.3:1.
 - The comp's very small copyright text (10px) is kept.
