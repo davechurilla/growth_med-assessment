@@ -84,3 +84,28 @@ and meet **WCAG 2.2 AA**.
 - Contact form: submits to _TBD_ (or is removed)
 - Sections in the final page: _TBD_
 - Deadline / delivery format: _TBD_
+
+## The following are instructions for this task from Steven Fruchter at GrowthMed
+
+# Test:
+- Please convert as much of the design as you can into HTML/CSS. We will
+not use your code on a production site.
+- We will be mainly focusing on your awareness of conventions, the
+efficiency and structure of your code, and your attention to detail.
+
+# Instructions:
+- The wrapper width is 1200px with 30px of padding on each side.
+Globally apply box-sizing:border-box;.
+- The fonts used are the Google fonts, Oswald and Lato
+- In the feature area make the running couple a png separate from the
+background.
+- In the procedure section make the procedure cards entirely out of
+HTML/CSS using a repeating image for the background gradient.
+- In the procedure section give the cards the indicated orange hover state.
+- Create hover states for all buttons and add CSS transitions to all
+hover events.
+- Make the site responsive utilizing Bootstrap.
+
+# If you have time:
+- In the feature area use Slick Slider to make the text rotate out
+with a fade, adding buttons to manually switch between slides.

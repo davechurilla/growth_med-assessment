@@ -8,12 +8,23 @@
    ========================================================================== */
 
 
-/* 1. Brand tokens -- PLACEHOLDER values, replace from the design file
+/* 1. Brand tokens -- APPROXIMATE values eyeballed from the comp; replace with
+   exact values from the PSD
    -------------------------------------------------------------------------- */
 :root {
   --gm-primary: #0b6e99;
   --gm-primary-rgb: 11, 110, 153;   /* same color as above, as r, g, b */
   --gm-primary-dark: #095a7d;       /* hover / pressed state */
+
+  --gm-accent: #e8702a;             /* orange: buttons, nav underline, hover cards */
+  --gm-teal: #00a9c4;               /* light end of the teal card gradient */
+  --gm-navy: #00497a;               /* dark end of the teal card gradient */
+  --gm-dark: #2b2d31;               /* footer background */
+
+  --gm-font-heading: "Oswald", sans-serif;
+  --gm-font-body: "Lato", sans-serif;
+  --gm-wrapper: 1200px;             /* client spec: 1200px wide, 30px side padding */
+  --gm-wrapper-pad: 30px;
 
   --gm-speed: 200ms;
   --gm-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
@@ -28,9 +39,29 @@
   --bs-link-color-rgb: var(--gm-primary-rgb);
   --bs-link-hover-color-rgb: 9, 90, 125;   /* keep in sync with --gm-primary-dark */
 
-  /* Typeface: uncomment and set once the design specifies one.
-     (Load the font in <head> first.) */
-  /* --bs-body-font-family: "Your Font", system-ui, sans-serif; */
+  --bs-body-font-family: var(--gm-font-body);
+  --bs-heading-font-family: var(--gm-font-heading);
+}
+
+/* Client spec: border-box everywhere (Bootstrap already sets this; stated
+   explicitly so the rule is visible) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Client spec: 1200px wrapper with 30px side padding. Bootstrap's container
+   pads by half of --bs-gutter-x, so the gutter is 2 x 30px. Fixing max-width
+   replaces Bootstrap's stepped container widths at every breakpoint. */
+.container {
+  --bs-gutter-x: calc(var(--gm-wrapper-pad) * 2);
+  max-width: var(--gm-wrapper);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--bs-heading-font-family);
 }
 
 /* Bootstrap's compiled buttons ignore --bs-primary, so map them explicitly */
