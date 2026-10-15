@@ -61,6 +61,8 @@ and meet **WCAG 2.2 AA**.
 ## JavaScript conventions
 - Vanilla JS wrapped in a single IIFE, as in `main.js` (no ES modules, no libraries
   beyond Bootstrap).
+  Exception: the client's brief asks for Slick Slider, which requires jQuery. Both are
+  loaded from jsDelivr with pinned versions and SRI hashes, and used only for the hero slider.
 - Use Bootstrap's JS API (`bootstrap.Collapse`, etc.) rather than reimplementing it.
 - `FORM_ENDPOINT` in `main.js` is intentionally empty. Do not invent an endpoint.
   Until I provide one, the form runs in demo mode and says so on screen.

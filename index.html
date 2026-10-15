@@ -14,6 +14,8 @@
 
   <!-- Bootstrap 5.3.8 (CSS) -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- Slick Slider 1.8.1 (core CSS only; the slider look lives in styles.css) -->
+  <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" rel="stylesheet" integrity="sha384-MUdXdzn1OB/0zkr4yGLnCqZ/n9ut5N7Ifes9RP2d5xKsTtcPiuiwthWczWuiqFOn" crossorigin="anonymous">
   <!-- Project styles: brand tokens + hover/motion polish only -->
   <link href="css/styles.css" rel="stylesheet">
 </head>
@@ -54,11 +56,34 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 hero__copy">
-            <h1 class="hero__title">
-              <span class="hero__title-line">Leading the field in</span>
-              <span class="hero__title-line"><span class="hero__title-accent">Weight Loss</span> Surgery</span>
-            </h1>
-            <p class="hero__quote">&ldquo;Before I was alive <span class="hero__quote-mark">and now im living&rdquo;</span></p>
+            <div class="hero__slider" id="heroSlider">
+              <div class="hero__slide">
+                <h1 class="hero__title">
+                  <span class="hero__title-line">Leading the field in</span>
+                  <span class="hero__title-line"><span class="hero__title-accent">Weight Loss</span> Surgery</span>
+                </h1>
+                <p class="hero__quote">&ldquo;Before I was alive <span class="hero__quote-mark">and now im living&rdquo;</span></p>
+              </div>
+              <!-- Slides 2 and 3: placeholder copy until the client supplies text -->
+              <div class="hero__slide">
+                <p class="hero__title">
+                  <span class="hero__title-line">Placeholder headline</span>
+                  <span class="hero__title-line"><span class="hero__title-accent">Slide</span> Two</span>
+                </p>
+                <p class="hero__quote">&ldquo;Placeholder quote <span class="hero__quote-mark">second line here&rdquo;</span></p>
+              </div>
+              <div class="hero__slide">
+                <p class="hero__title">
+                  <span class="hero__title-line">Placeholder headline</span>
+                  <span class="hero__title-line"><span class="hero__title-accent">Slide</span> Three</span>
+                </p>
+                <p class="hero__quote">&ldquo;Placeholder quote <span class="hero__quote-mark">second line here&rdquo;</span></p>
+              </div>
+            </div>
+            <div class="hero__controls" role="group" aria-label="Hero slides">
+              <div class="hero__dots" id="heroDots"></div>
+              <button class="hero__pause" id="heroPause" type="button" aria-label="Pause slide rotation"></button>
+            </div>
             <a class="btn btn-cta" href="#">Read more</a>
           </div>
           <div class="col-lg-6 hero__media">
@@ -169,6 +194,9 @@
 
   <!-- Bootstrap 5.3.8 (JS bundle, includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <!-- jQuery 3.7.1 and Slick 1.8.1 (hero text fade; Slick requires jQuery) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js" integrity="sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js" integrity="sha384-YGnnOBKslPJVs35GG0TtAZ4uO7BHpHlqJhs0XK3k6cuVb6EBtl+8xcvIIOKV5wB+" crossorigin="anonymous"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

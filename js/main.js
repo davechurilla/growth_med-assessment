@@ -70,4 +70,47 @@
       submitBtn.disabled = false;
     }
   });
+
+  // Hero text slider (Slick): fade between slides, dots, and a pause control.
+  // Autoplay is skipped for visitors who prefer reduced motion.
+  const $slider = window.jQuery && window.jQuery('#heroSlider');
+  if ($slider && $slider.slick) {
+    const pauseBtn = document.getElementById('heroPause');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let paused = reduceMotion;
+
+    $slider.slick({
+      fade: true,
+      speed: reduceMotion ? 0 : 700,
+      autoplay: !reduceMotion,
+      autoplaySpeed: 6000,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+      arrows: false,
+      dots: true,
+      appendDots: '#heroDots',
+      customPaging: (slider, i) => window.jQuery('<button type="button">').attr('aria-label', `Show slide ${i + 1}`),
+    });
+
+    const syncPauseButton = () => {
+      pauseBtn.classList.toggle('is-paused', paused);
+      pauseBtn.setAttribute('aria-label', paused ? 'Start slide rotation' : 'Pause slide rotation');
+    };
+    syncPauseButton();
+
+    pauseBtn.addEventListener('click', () => {
+      paused = !paused;
+      $slider.slick(paused ? 'slickPause' : 'slickPlay');
+      syncPauseButton();
+    });
+
+    // A manual change (dots) ends automatic rotation until the visitor restarts it
+    document.getElementById('heroDots').addEventListener('click', () => {
+      if (!paused) {
+        paused = true;
+        $slider.slick('slickPause');
+        syncPauseButton();
+      }
+    });
+  }
 })();

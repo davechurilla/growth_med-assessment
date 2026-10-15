@@ -235,6 +235,7 @@ h1, h2, h3, h4, h5, h6,
 
 .hero__title {
   margin: 0;
+  font-family: var(--gm-font-heading);    /* slides 2-3 use <p>, so set it here too */
   font-size: clamp(2rem, 6vw, 3.15rem);   /* 30.22pt */
   font-weight: 300;
   letter-spacing: 0.06em;
@@ -271,6 +272,90 @@ h1, h2, h3, h4, h5, h6,
   color: #fff;
 }
 
+/* Slider: before Slick starts (or without JS) only the first slide shows */
+.hero__slider:not(.slick-initialized) .hero__slide:not(:first-child) {
+  display: none;
+}
+
+.hero__slide:focus {
+  outline: 0;
+}
+
+/* Dots + pause control. Beside the quote on desktop (as in the comp), below the
+   text on smaller screens. Buttons are 28px so touch targets clear 24x24. */
+.hero__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero__dots ul {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero__dots li {
+  margin: 0;
+}
+
+.hero__dots button,
+.hero__pause {
+  position: relative;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0;                  /* the dot is drawn by ::before; text is for assistive tech */
+}
+
+.hero__dots button::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: #000;
+  transform: translate(-50%, -50%);
+}
+
+.hero__dots .slick-active button {
+  border-color: var(--gm-accent);
+}
+
+/* Pause / play icon drawn with CSS: two bars, or a triangle when paused */
+.hero__pause::before {
+  content: "";
+  position: absolute;
+  inset: 50% auto auto 50%;
+  width: 0.5rem;
+  height: 0.8rem;
+  border-inline: 3px solid #000;
+  transform: translate(-50%, -50%);
+}
+
+.hero__pause.is-paused::before {
+  width: 0;
+  height: 0;
+  border-inline: 0;
+  border-block: 0.3125rem solid transparent;
+  border-inline-start: 0.5rem solid #000;
+  transform: translate(-35%, -50%);
+}
+
+.hero__dots button:focus-visible,
+.hero__pause:focus-visible {
+  outline: 2px solid var(--gm-ink);
+  outline-offset: 2px;
+}
+
 .hero__media {
   display: flex;
   align-items: flex-end;
@@ -294,9 +379,17 @@ h1, h2, h3, h4, h5, h6,
   }
 
   .hero__copy {
+    position: relative;
     padding-top: 9.75rem;
     padding-bottom: 9.6rem;
     text-align: start;
+  }
+
+  .hero__controls {
+    position: absolute;
+    top: 21.25rem;              /* level with the quote, right of its first line */
+    left: 24rem;
+    margin: 0;
   }
 
   .hero__media {
