@@ -7,6 +7,9 @@
   <meta name="description" content="Weight Loss Center: learn about weight loss surgery procedures and get in touch.">
   <!-- TODO: favicon and Open Graph / social tags once copy and assets are final -->
 
+  <!-- The runners image is the largest above-the-fold element: fetch it early -->
+  <link rel="preload" as="image" href="assets/runners.png" fetchpriority="high">
+
   <!-- Fonts specified by the client: Oswald (headings, nav) and Lato (body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,7 +90,7 @@
             <a class="btn btn-cta" href="#">Read more</a>
           </div>
           <div class="col-lg-6 hero__media">
-            <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side" width="582" height="540">
+            <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side" width="582" height="540" fetchpriority="high" decoding="async">
           </div>
         </div>
       </div>
