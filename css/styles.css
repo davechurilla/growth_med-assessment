@@ -142,6 +142,11 @@ h1, h2, h3, h4, h5, h6,
   color: #fff;
 }
 
+/* The footer is centered; keep the two logo lines left-aligned like the header */
+.brand__text {
+  text-align: start;
+}
+
 @media (min-width: 992px) {
   /* Divider "|" after Contact: a short rule, decorative only */
   .nav-phone {
