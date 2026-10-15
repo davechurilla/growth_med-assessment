@@ -16,7 +16,7 @@
   --gm-primary-rgb: 11, 110, 153;   /* same color as above, as r, g, b */
   --gm-primary-dark: #095a7d;       /* hover / pressed state */
 
-  --gm-accent: #e8702a;             /* APPROX: orange for buttons, nav underline */
+  --gm-accent: #de5630;             /* orange: nav underline, button gradient start (= dark end of the orange gradient) */
   --gm-orange-light: #ea8b51;       /* orange gradient, light end (from PSD) */
   --gm-teal: #00b1c5;               /* teal gradient, light end (from PSD) */
   --gm-navy: #00537e;               /* teal gradient, dark end (from PSD) */
@@ -121,8 +121,8 @@ html {
 :root {
   --gm-ink: #1d1d1b;        /* approximate: body/nav text */
   --gm-phone: #237ba2;      /* nav phone number: darkened from PSD #73bfdc (2.06:1) to 4.74:1 on white */
-  --gm-orange-dark: #e2492b; /* APPROX: orange gradient dark end, awaiting PSD value */
-  --gm-btn-teal: #0679a4;   /* APPROX: "Learn more" button text on teal cards */
+  --gm-orange-dark: #de5630; /* orange gradient, dark end (from PSD) */
+  --gm-btn-teal: #00537e;   /* "Learn more" button text on teal cards (from PSD) */
   --gm-grad-teal: linear-gradient(200deg, var(--gm-teal), var(--gm-navy));
   --gm-grad-orange: linear-gradient(200deg, var(--gm-orange-light), var(--gm-orange-dark));
 }
