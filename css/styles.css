@@ -16,10 +16,13 @@
   --gm-primary-rgb: 11, 110, 153;   /* same color as above, as r, g, b */
   --gm-primary-dark: #095a7d;       /* hover / pressed state */
 
-  --gm-accent: #e8702a;             /* orange: buttons, nav underline, hover cards */
-  --gm-teal: #00a9c4;               /* light end of the teal card gradient */
-  --gm-navy: #00497a;               /* dark end of the teal card gradient */
-  --gm-dark: #2b2d31;               /* footer background */
+  --gm-accent: #e8702a;             /* APPROX: orange for buttons, nav underline */
+  --gm-orange-light: #ea8b51;       /* orange gradient, light end (from PSD) */
+  --gm-teal: #00b1c5;               /* teal gradient, light end (from PSD) */
+  --gm-navy: #00537e;               /* teal gradient, dark end (from PSD) */
+  --gm-dark: #2e2f31;               /* footer background (from PSD) */
+  --gm-teal-text: #28a2be;          /* headline "WEIGHT LOSS" (from PSD) */
+  --gm-field-border: #e4e4e4;       /* form field border (from PSD) */
 
   --gm-font-heading: "Oswald", sans-serif;
   --gm-font-body: "Lato", sans-serif;
@@ -117,7 +120,7 @@ html {
    -------------------------------------------------------------------------- */
 :root {
   --gm-ink: #1d1d1b;        /* approximate: body/nav text */
-  --gm-phone: #5aa5c8;      /* approximate: nav phone number (check contrast) */
+  --gm-phone: #73bfdc;      /* nav phone number (from PSD); 2.06:1 on white, see notes */
 }
 
 .site-header {
