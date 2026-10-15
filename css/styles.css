@@ -227,10 +227,12 @@ h1, h2, h3, h4, h5, h6,
 .btn-pill {
   --bs-btn-bg: #fff;
   --bs-btn-color: var(--gm-btn-teal);
-  --bs-btn-hover-bg: var(--gm-btn-hover);
-  --bs-btn-hover-color: #fff;
-  --bs-btn-active-bg: var(--gm-btn-hover);
-  --bs-btn-active-color: #fff;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-color: var(--gm-accent);
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-color: var(--gm-accent);
+  position: relative;
+  z-index: 2;               /* above the card's overlay link, so hover only reacts on the button */
 }
 
 
@@ -725,6 +727,11 @@ h1, h2, h3, h4, h5, h6,
     transform: translateY(-2px);
   }
 
+  /* Card buttons grow slightly toward the viewer instead of lifting */
+  .btn.btn-pill:hover:not(:disabled) {
+    transform: scale(1.08);
+  }
+
   .btn:active:not(:disabled) {
     transform: translateY(0);
   }
@@ -733,7 +740,12 @@ h1, h2, h3, h4, h5, h6,
 
 /* Hover and transitions for the comp's buttons, nav and procedure cards */
 @media (hover: hover) {
-  .proc-card:hover::before {
+  .btn-pill:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+  }
+
+  /* The card turns orange only while the button itself is hovered */
+  .proc-card:has(.btn-pill:hover)::before {
     opacity: 1;
   }
 
@@ -759,6 +771,7 @@ h1, h2, h3, h4, h5, h6,
     transition:
       color var(--gm-speed) var(--gm-ease),
       background-color var(--gm-speed) var(--gm-ease),
+      box-shadow var(--gm-speed) var(--gm-ease),
       transform var(--gm-speed) var(--gm-ease);
   }
 }

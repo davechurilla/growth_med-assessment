@@ -20,10 +20,12 @@ This project is a development assessment by Dave Churilla, prepared for Steven F
 
 - The wrapper is read as 1200px wide *including* the 30px side padding (1140px of content), which matches the comp. Verified in the browser at a 1920px viewport; `box-sizing: border-box` is applied globally.
 
+- Procedure cards are clickable as a whole (an invisible, non-focusable link sits over the card), while the visible "Learn more" button is the real link for keyboard and screen-reader users. The orange hover state and the button's grow-and-shadow effect happen only when the button itself is hovered.
 - Hero slider (Slick, fade): the headline and quote rotate together; "Read more" stays fixed. Slides 2 and 3 use placeholder text because the comp only has one slide's copy. It includes dots, a pause/play button (WCAG 2.2.2), and no autoplay when the visitor prefers reduced motion. Using a dot stops the automatic rotation until the visitor restarts it.
 
 **Built to the comp, with accessibility trade-offs**
 - White text on the orange gradient buttons (Read more, Submit) measures 2.5-3.8:1, under the 4.5:1 minimum. White body text on the orange hover card is about 3.3:1.
+- On hover, the card buttons show dark-orange text (`#de5630`) on white, as in the comp. That is 3.83:1, under 4.5:1 for 18px bold text.
 - The comp's very small copyright text (10px) is kept.
 - Form fields use the comp's placeholder style, with visually hidden labels. A visible or floating label would be better practice.
 - Adjusted for contrast: the nav phone number (`#73bfdc` to `#237ba2`) and the form field borders (`#e4e4e4` to `#8f8f8f`).
