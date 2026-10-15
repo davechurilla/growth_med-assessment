@@ -224,8 +224,21 @@ html {
   --bs-btn-color: #fff;
   --bs-btn-hover-color: #fff;
   --bs-btn-active-color: #fff;
+  position: relative;
+  isolation: isolate;
   background: linear-gradient(90deg, var(--gm-accent), var(--gm-orange-light));
   color: #fff;
+}
+
+/* Hover colour is a layer faded in over the gradient (gradients can't transition) */
+.btn-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--gm-btn-hover);
+  opacity: 0;
 }
 
 /* White pill on the procedure cards */
@@ -670,8 +683,8 @@ html {
     opacity: 1;
   }
 
-  .btn-cta:hover {
-    filter: brightness(0.92);
+  .btn-cta:hover::before {
+    opacity: 1;
   }
 
 }
@@ -682,7 +695,11 @@ html {
   }
 
   .btn-cta {
-    transition: filter var(--gm-speed) var(--gm-ease), transform var(--gm-speed) var(--gm-ease);
+    transition: transform var(--gm-speed) var(--gm-ease);
+  }
+
+  .btn-cta::before {
+    transition: opacity var(--gm-speed) var(--gm-ease);
   }
 
   .btn-pill {
