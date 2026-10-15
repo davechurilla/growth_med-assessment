@@ -744,8 +744,8 @@ h1, h2, h3, h4, h5, h6,
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
   }
 
-  /* The card turns orange only while the button itself is hovered */
-  .proc-card:has(.btn-pill:hover)::before {
+  /* The whole card turns orange on hover; the button has its own hover effect */
+  .proc-card:hover::before {
     opacity: 1;
   }
 

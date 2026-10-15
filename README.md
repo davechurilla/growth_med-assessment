@@ -20,7 +20,7 @@ This project is a development assessment by Dave Churilla, prepared for Steven F
 
 - The wrapper is read as 1200px wide *including* the 30px side padding (1140px of content), which matches the comp. Verified in the browser at a 1920px viewport; `box-sizing: border-box` is applied globally.
 
-- Procedure cards are clickable as a whole (an invisible, non-focusable link sits over the card), while the visible "Learn more" button is the real link for keyboard and screen-reader users. The orange hover state and the button's grow-and-shadow effect happen only when the button itself is hovered.
+- Procedure cards are clickable as a whole (an invisible, non-focusable link sits over the card), while the visible "Learn more" button is the real link for keyboard and screen-reader users. The card turns orange when hovered anywhere; the button's own effect (orange text, grow, shadow) happens only when the button itself is hovered.
 - Hero slider (Slick, fade): the headline and quote rotate together; "Read more" stays fixed. Slides 2 and 3 use placeholder text because the comp only has one slide's copy. It includes dots, a pause/play button (WCAG 2.2.2), and no autoplay when the visitor prefers reduced motion. Using a dot stops the automatic rotation until the visitor restarts it.
 
 **Built to the comp, with accessibility trade-offs**
