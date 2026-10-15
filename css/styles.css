@@ -120,7 +120,11 @@ html {
    -------------------------------------------------------------------------- */
 :root {
   --gm-ink: #1d1d1b;        /* approximate: body/nav text */
-  --gm-phone: #73bfdc;      /* nav phone number (from PSD); 2.06:1 on white, see notes */
+  --gm-phone: #237ba2;      /* nav phone number: darkened from PSD #73bfdc (2.06:1) to 4.74:1 on white */
+  --gm-orange-dark: #e2492b; /* APPROX: orange gradient dark end, awaiting PSD value */
+  --gm-btn-teal: #0679a4;   /* APPROX: "Learn more" button text on teal cards */
+  --gm-grad-teal: linear-gradient(200deg, var(--gm-teal), var(--gm-navy));
+  --gm-grad-orange: linear-gradient(200deg, var(--gm-orange-light), var(--gm-orange-dark));
 }
 
 .site-header {
@@ -183,6 +187,187 @@ html {
     background: #fff;
     padding: 0.5rem 0;
   }
+}
+
+
+/* Buttons: CTA style (Oswald 700, 18px, 0.08em) shared by every button
+   -------------------------------------------------------------------------- */
+.btn-cta,
+.btn-pill {
+  padding: 0.75rem 2.25rem;
+  border: 0;
+  border-radius: 50rem;
+  font-family: var(--gm-font-heading);
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Orange gradient button (Read more, Submit) */
+.btn-cta {
+  --bs-btn-color: #fff;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-active-color: #fff;
+  background: linear-gradient(90deg, var(--gm-accent), var(--gm-orange-light));
+  color: #fff;
+}
+
+/* White pill on the procedure cards */
+.btn-pill {
+  --bs-btn-hover-color: var(--gm-btn-teal);
+  background: #fff;
+  color: var(--gm-btn-teal);
+}
+
+
+/* Hero
+   Measurements are from the 1:1 comp. The header overlays this section, and
+   the procedure cards overlap its bottom edge (see .procedures).
+   -------------------------------------------------------------------------- */
+.hero {
+  padding-top: 10rem;
+  background: #e8f1f6 url("../assets/hero-bg.jpg") center top / cover no-repeat;
+}
+
+.hero__copy {
+  padding-bottom: 3rem;
+}
+
+.hero__title {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.15rem);   /* 30.22pt */
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.29;
+  text-transform: uppercase;
+}
+
+.hero__title-line {
+  display: block;
+}
+
+.hero__title-line + .hero__title-line {
+  font-weight: 400;
+}
+
+.hero__title-accent {
+  color: var(--gm-teal-text);
+}
+
+.hero__quote {
+  margin: 1.5rem 0;
+  font-family: var(--gm-font-heading);
+  font-size: clamp(1.25rem, 4vw, 1.7rem);  /* 16.39pt */
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.hero__quote-mark {
+  display: inline-block;
+  padding: 0 0.4em;
+  background: #000;
+  color: #fff;
+}
+
+.hero__media {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.hero__runners {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (min-width: 992px) {
+  .hero {
+    min-height: 670px;
+    padding-top: 12rem;
+  }
+
+  .hero .row {
+    align-items: flex-end;
+  }
+
+  .hero__copy {
+    padding-bottom: 9.6rem;
+  }
+
+  .hero__media {
+    justify-content: flex-end;
+  }
+}
+
+
+/* Procedure cards
+   Pure HTML/CSS. The gradients are CSS (deliberately not a repeating image).
+   The orange hover state is a second gradient layer faded in, because CSS
+   cannot transition between two gradients directly.
+   -------------------------------------------------------------------------- */
+.procedures {
+  position: relative;
+  z-index: 1;
+  margin-top: -2.4rem;      /* cards overlap the hero's bottom edge */
+  padding-bottom: 3rem;
+}
+
+.procedures__row {
+  --bs-gutter-x: 3.25rem;
+  --bs-gutter-y: 2rem;
+}
+
+.proc-card {
+  position: relative;
+  isolation: isolate;
+  height: 100%;
+  padding: 2.6rem 2.5rem 2.8rem;
+  border-radius: 45px 55px 75px 0;
+  background: var(--gm-grad-teal);
+  color: #fff;
+  text-align: center;
+}
+
+.proc-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--gm-grad-orange);
+  opacity: 0;
+}
+
+.proc-card:focus-within::before {
+  opacity: 1;
+}
+
+.proc-card__icon {
+  display: block;
+  margin: 0 auto 2.2rem;
+}
+
+.proc-card__title {
+  margin: 0 auto 2.4rem;
+  max-width: 16rem;
+  font-size: 1.5rem;         /* 14.4pt */
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.proc-card__text {
+  margin: 0 auto 2.4rem;
+  max-width: 15rem;
+  font-size: 0.875rem;       /* 8.33pt */
+  letter-spacing: 0.1em;
+  line-height: 1.2;
 }
 
 
@@ -316,5 +501,34 @@ html {
 
   .hover-zoom:hover .hover-zoom__media {
     transform: scale(1.04);
+  }
+}
+
+/* Hover and transitions for the comp's buttons, nav and procedure cards */
+@media (hover: hover) {
+  .proc-card:hover::before {
+    opacity: 1;
+  }
+
+  .btn-cta:hover {
+    filter: brightness(0.92);
+  }
+
+  .btn-pill:hover {
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .proc-card::before {
+    transition: opacity 300ms var(--gm-ease);
+  }
+
+  .btn-cta {
+    transition: filter var(--gm-speed) var(--gm-ease), transform var(--gm-speed) var(--gm-ease);
+  }
+
+  .btn-pill {
+    transition: box-shadow var(--gm-speed) var(--gm-ease), transform var(--gm-speed) var(--gm-ease);
   }
 }

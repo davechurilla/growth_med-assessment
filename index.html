@@ -50,92 +50,55 @@
   <main id="main">
 
     <!-- Hero -->
-    <section id="hero" class="py-5 bg-body-tertiary">
-      <div class="container py-lg-5">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6">
-            <h1 class="display-4 fw-bold">Headline goes here</h1>
-            <p class="lead text-body-secondary mt-3">Supporting copy goes here. One or two sentences that say what GrowthMed offers and who it is for.</p>
-            <div class="d-flex flex-column flex-sm-row gap-2 mt-4">
-              <a class="btn btn-primary btn-lg" href="#contact">Primary action</a>
-              <a class="btn btn-outline-primary btn-lg" href="#services">Secondary action</a>
-            </div>
+    <section id="top" class="hero">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 hero__copy">
+            <h1 class="hero__title">
+              <span class="hero__title-line">Leading the field in</span>
+              <span class="hero__title-line"><span class="hero__title-accent">Weight Loss</span> Surgery</span>
+            </h1>
+            <p class="hero__quote">&ldquo;Before I was alive <span class="hero__quote-mark">and now im living&rdquo;</span></p>
+            <a class="btn btn-cta" href="#">Read more</a>
           </div>
-          <div class="col-lg-6">
-            <!-- Swap the placeholder div for <img class="hover-zoom__media object-fit-cover" ...> when the asset arrives -->
-            <div class="ratio ratio-4x3 rounded-3 overflow-hidden hover-zoom">
-              <div class="hover-zoom__media bg-body-secondary d-flex align-items-center justify-content-center text-body-secondary">Hero image</div>
-            </div>
+          <div class="col-lg-6 hero__media">
+            <!-- width/height to be set from the exported file to prevent layout shift -->
+            <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side">
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="py-5">
-      <div class="container py-lg-4">
-        <h2 class="fw-bold mb-2">Services heading</h2>
-        <p class="text-body-secondary mb-5">Short intro line for this section.</p>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <!-- Procedures -->
+    <section id="procedures" class="procedures" aria-labelledby="proceduresHeading">
+      <div class="container">
+        <h2 class="visually-hidden" id="proceduresHeading">Procedures</h2>
+        <div class="row row-cols-1 row-cols-md-3 procedures__row">
           <div class="col">
-            <article class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <h3 class="h5 card-title">Service one</h3>
-                <p class="card-text text-body-secondary">A sentence or two describing this service.</p>
-                <a class="stretched-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="#contact">Learn more</a>
-              </div>
+            <article class="proc-card">
+              <img class="proc-card__icon" src="assets/icon-procedure-1.svg" alt="" width="135" height="135">
+              <h3 class="proc-card__title">One kind of weight loss procedure</h3>
+              <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
+              <a class="btn btn-pill" href="#">Learn more</a>
             </article>
           </div>
           <div class="col">
-            <article class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <h3 class="h5 card-title">Service two</h3>
-                <p class="card-text text-body-secondary">A sentence or two describing this service.</p>
-                <a class="stretched-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="#contact">Learn more</a>
-              </div>
+            <article class="proc-card">
+              <img class="proc-card__icon" src="assets/icon-procedure-2.svg" alt="" width="135" height="135">
+              <h3 class="proc-card__title">Another weight loss procedure</h3>
+              <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
+              <a class="btn btn-pill" href="#">Learn more</a>
             </article>
           </div>
           <div class="col">
-            <article class="card h-100 card-hover">
-              <div class="card-body p-4">
-                <h3 class="h5 card-title">Service three</h3>
-                <p class="card-text text-body-secondary">A sentence or two describing this service.</p>
-                <a class="stretched-link link-underline link-underline-opacity-0 link-underline-opacity-100-hover link-offset-2" href="#contact">Learn more</a>
-              </div>
+            <article class="proc-card">
+              <img class="proc-card__icon" src="assets/icon-procedure-3.svg" alt="" width="135" height="135">
+              <h3 class="proc-card__title">A third weight loss procedure</h3>
+              <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
+              <a class="btn btn-pill" href="#">Learn more</a>
             </article>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="py-5 bg-body-tertiary">
-      <div class="container py-lg-4">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-6">
-            <div class="ratio ratio-4x3 rounded-3 overflow-hidden hover-zoom">
-              <div class="hover-zoom__media bg-body-secondary d-flex align-items-center justify-content-center text-body-secondary">Section image</div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <h2 class="fw-bold">About heading</h2>
-            <p class="text-body-secondary mt-3">Paragraph describing the company, approach, or story goes here.</p>
-            <ul class="list-unstyled d-grid gap-2 mt-4 mb-0">
-              <li>Supporting point one</li>
-              <li>Supporting point two</li>
-              <li>Supporting point three</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Call to action band -->
-    <section id="cta" class="py-5 bg-primary text-white">
-      <div class="container py-lg-3 text-center">
-        <h2 class="fw-bold">Call to action headline</h2>
-        <p class="lead mb-4">One line that tells the visitor what happens next.</p>
-        <a class="btn btn-light btn-lg" href="#contact">Action label</a>
       </div>
     </section>
 
