@@ -40,13 +40,12 @@ Lighthouse v13.4.1, run locally by Dave on `index.html` (served from a local dev
 
 | | Performance | Accessibility | Best Practices | SEO |
 |---|---|---|---|---|
-| Desktop | 97 | 100 | 100 | 100 |
-| Mobile | 91 | 100 | 100 | 100 |
+| Desktop | 97 | 100 | 96-100 | 100 |
+| Mobile | 96 | 100 | 96 | 100 |
 
 - **Desktop:** Largest Contentful Paint 1.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.033.
-- **Mobile (simulated slow connection):** First Contentful Paint 1.8s, Largest Contentful Paint 3.0s, Total Blocking Time 0ms, Cumulative Layout Shift 0.103. An earlier mobile run scored 74 with a 6.1s LCP; converting the runners image and both backgrounds to WebP (with JPG/PNG fallbacks) and fetching the runners image early fixed most of it.
-- **After that run:** the layout shift was traced to the web-font swap (the headline wrapped differently before Oswald loaded) and fixed with a size-matched fallback font. In a local browser measurement the shift dropped from about 0.10 to about 0.003; Lighthouse has not been rerun since.
-- **Remaining notes:** four render-blocking stylesheets (Bootstrap, Slick, Google Fonts, the page CSS), a small image-delivery saving on the icons and logo, and a 1x logo. Unused JavaScript in the reports came from browser extensions, and the unminified stylesheet is by design (no build step).
+- **Mobile (simulated slow connection):** First Contentful Paint 1.7s, Largest Contentful Paint 2.7s, Total Blocking Time 0ms, Cumulative Layout Shift 0. A first mobile run scored 74 with a 6.1s LCP. Converting the runners image and both backgrounds to WebP (with JPG/PNG fallbacks), fetching the runners image early, and adding a size-matched fallback for the Oswald web font (which removed a layout shift when the font loaded) brought it to 96.
+- **Remaining notes:** Best Practices 96 is the header logo, which is a 1x image and looks low-resolution on high-density screens (a 2x export or SVG would fix it). Lighthouse also lists render-blocking stylesheets (Bootstrap, Slick, Google Fonts, the page CSS) and small image savings on the icons. Unused JavaScript in the reports came from browser extensions, and the unminified stylesheet is by design (no build step).
 
 Lighthouse covers only the automated accessibility checks, so the trade-offs listed above still apply. A manual keyboard pass and an axe scan are separate from these results.
 
