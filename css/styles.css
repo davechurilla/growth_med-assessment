@@ -1,20 +1,19 @@
 /* ==========================================================================
-   GrowthMed landing page
+   Weight Loss Center landing page
 
-   Bootstrap handles layout and component styling. This file only:
-   1. defines brand tokens (swap the placeholders when the design arrives)
+   Bootstrap handles the grid, utilities and base components. This file:
+   1. defines brand tokens (values from the PSD unless marked approximate)
    2. maps those tokens onto Bootstrap's CSS variables
-   3. adds the hover / motion polish Bootstrap doesn't ship with
+   3. styles the sections built from the comp (header, hero, procedure cards,
+      contact, footer) and the hover / motion polish
    ========================================================================== */
 
 
-/* 1. Brand tokens -- APPROXIMATE values eyeballed from the comp; replace with
-   exact values from the PSD
+/* 1. Brand tokens
    -------------------------------------------------------------------------- */
 :root {
-  --gm-primary: #0b6e99;
-  --gm-primary-rgb: 11, 110, 153;   /* same color as above, as r, g, b */
-  --gm-primary-dark: #095a7d;       /* hover / pressed state */
+  --gm-primary: #0679a4;            /* focus rings and Bootstrap's default link color */
+  --gm-primary-rgb: 6, 121, 164;    /* same color as above, as r, g, b */
 
   --gm-accent: #de5630;             /* orange: nav underline, button gradient start (= dark end of the orange gradient) */
   --gm-orange-light: #ea8b51;       /* orange gradient, light end (from PSD) */
@@ -41,7 +40,6 @@
   --bs-primary: var(--gm-primary);
   --bs-primary-rgb: var(--gm-primary-rgb);
   --bs-link-color-rgb: var(--gm-primary-rgb);
-  --bs-link-hover-color-rgb: 9, 90, 125;   /* keep in sync with --gm-primary-dark */
 
   --bs-body-font-family: var(--gm-font-body);
   --bs-heading-font-family: var(--gm-font-heading);
@@ -68,31 +66,6 @@ h1, h2, h3, h4, h5, h6,
   font-family: var(--bs-heading-font-family);
 }
 
-/* Bootstrap's compiled buttons ignore --bs-primary, so map them explicitly */
-.btn-primary {
-  --bs-btn-bg: var(--gm-primary);
-  --bs-btn-border-color: var(--gm-primary);
-  --bs-btn-hover-bg: var(--gm-primary-dark);
-  --bs-btn-hover-border-color: var(--gm-primary-dark);
-  --bs-btn-active-bg: var(--gm-primary-dark);
-  --bs-btn-active-border-color: var(--gm-primary-dark);
-  --bs-btn-disabled-bg: var(--gm-primary);
-  --bs-btn-disabled-border-color: var(--gm-primary);
-  --bs-btn-focus-shadow-rgb: var(--gm-primary-rgb);
-}
-
-.btn-outline-primary {
-  --bs-btn-color: var(--gm-primary);
-  --bs-btn-border-color: var(--gm-primary);
-  --bs-btn-hover-bg: var(--gm-primary);
-  --bs-btn-hover-border-color: var(--gm-primary);
-  --bs-btn-active-bg: var(--gm-primary-dark);
-  --bs-btn-active-border-color: var(--gm-primary-dark);
-  --bs-btn-disabled-color: var(--gm-primary);
-  --bs-btn-disabled-border-color: var(--gm-primary);
-  --bs-btn-focus-shadow-rgb: var(--gm-primary-rgb);
-}
-
 /* Form focus ring in the brand color */
 .form-control:focus {
   border-color: var(--gm-primary);
@@ -103,24 +76,18 @@ h1, h2, h3, h4, h5, h6,
   box-shadow: 0 0 0 0.25rem rgba(var(--gm-primary-rgb), 0.25);
 }
 
-/* Skip link sits above the sticky header (z-index 1020) when focused */
+/* Skip link sits above the header when focused */
 .skip-link {
   top: 0.5rem;
   left: 0.5rem;
   z-index: 1040;
 }
 
-/* Anchor jumps land below the sticky navbar */
-html {
-  scroll-padding-top: 5rem;
-}
-
-
 /* Header, nav and logo
    Type values come from the PSD (Photoshop pt x 1.667 at 120ppi = CSS px).
    -------------------------------------------------------------------------- */
 :root {
-  --gm-ink: #1d1d1b;        /* approximate: body/nav text */
+  --gm-ink: #1d1d1b;        /* APPROXIMATE: body/nav text */
   --gm-phone: #237ba2;      /* nav phone number: darkened from PSD #73bfdc (2.06:1) to 4.74:1 on white */
   --gm-orange-dark: #de5630; /* orange gradient, dark end (from PSD) */
   --gm-btn-hover: #0679a4;  /* lighter blue hover for the card buttons; white text 4.91:1 */
@@ -604,7 +571,7 @@ html {
     transform-origin: left center;
   }
 
-  /* Active section (scrollspy) and keyboard focus always show the underline */
+  /* Current page and keyboard focus always show the underline */
   .navbar .nav-link.active::after,
   .navbar .nav-link:focus-visible::after {
     transform: scaleX(1);
@@ -615,23 +582,6 @@ html {
   .navbar .nav-link:hover::after {
     transform: scaleX(1);
   }
-}
-
-/* Cards: shadow on hover or keyboard focus (lift is added below) */
-.card-hover:focus-within {
-  box-shadow: var(--bs-box-shadow-lg);
-}
-
-@media (hover: hover) {
-  .card-hover:hover {
-    box-shadow: var(--bs-box-shadow-lg);
-  }
-}
-
-/* Image containers: media scales inside its frame (clipped by overflow-hidden) */
-.hover-zoom__media {
-  width: 100%;
-  height: 100%;
 }
 
 /* Motion: transitions plus the transforms that use them */
@@ -649,16 +599,6 @@ html {
       box-shadow 0.15s ease-in-out,
       transform var(--gm-speed) var(--gm-ease);
   }
-
-  .card-hover {
-    transition:
-      transform var(--gm-speed) var(--gm-ease),
-      box-shadow var(--gm-speed) var(--gm-ease);
-  }
-
-  .hover-zoom__media {
-    transition: transform 500ms var(--gm-ease);
-  }
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -670,13 +610,6 @@ html {
     transform: translateY(0);
   }
 
-  .card-hover:hover {
-    transform: translateY(-4px);
-  }
-
-  .hover-zoom:hover .hover-zoom__media {
-    transform: scale(1.04);
-  }
 }
 
 /* Hover and transitions for the comp's buttons, nav and procedure cards */
@@ -688,7 +621,6 @@ html {
   .btn-cta:hover::before {
     opacity: 1;
   }
-
 }
 
 @media (prefers-reduced-motion: no-preference) {

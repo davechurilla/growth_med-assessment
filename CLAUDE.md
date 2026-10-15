@@ -78,12 +78,16 @@ and meet **WCAG 2.2 AA**.
   marketing claims, statistics, or testimonials. This is a healthcare company.
 - Ask before adding fonts, icon libraries, analytics, or any third-party script.
 
-## Project details (fill in once the client materials arrive)
-- Breakpoints defined by the comps: _TBD_
-- Brand colors / font(s): _TBD_
-- Contact form: submits to _TBD_ (or is removed)
-- Sections in the final page: _TBD_
-- Deadline / delivery format: _TBD_
+## Project details
+- Breakpoints defined by the comps: only one comp exists (desktop; 2181px canvas, 1:1,
+  content 1140px inside the 1200px wrapper with 30px padding). No tablet or phone comp, so
+  Bootstrap's default breakpoints are used; `lg` (992px) is the main layout switch.
+- Brand colors / font(s): teal `#00b1c5` to navy `#00537e`; orange `#ea8b51` to `#de5630`;
+  heading teal `#28a2be`; footer `#2e2f31`. Oswald (headings, nav, buttons) and Lato (body)
+  from Google Fonts. Type sizes converted from the PSD (Photoshop pt x 1.667 at 120ppi).
+- Contact form: demo mode, no endpoint (the page is a demonstration and is not deployed).
+- Sections in the final page: header/nav, hero, procedure cards, contact, footer.
+- Deadline / delivery format: about 2.5 hours from the brief; delivered as a GitHub repo.
 
 ## The following are instructions for this task from Steven Fruchter at GrowthMed
 
