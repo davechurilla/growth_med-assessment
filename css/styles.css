@@ -319,8 +319,8 @@ h1, h2, h3, h4, h5, h6,
   content: "";
   position: absolute;
   inset: 50% auto auto 50%;
-  width: 0.75rem;
-  height: 0.75rem;
+  width: 0.9375rem;             /* 15px in the PSD */
+  height: 0.9375rem;
   border-radius: 50%;
   background: #000;
   transform: translate(-50%, -50%);
