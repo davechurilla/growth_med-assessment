@@ -330,6 +330,12 @@ h1, h2, h3, h4, h5, h6,
   border-color: var(--gm-accent);
 }
 
+/* Active dot is smaller than the others inside its ring (9px in the PSD) */
+.hero__dots .slick-active button::before {
+  width: 0.5625rem;
+  height: 0.5625rem;
+}
+
 /* Pause / play icon drawn with CSS: two bars, or a triangle when paused */
 .hero__pause::before {
   content: "";
