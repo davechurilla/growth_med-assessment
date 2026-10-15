@@ -36,13 +36,19 @@ This project is a development assessment by Dave Churilla, prepared for Steven F
 
 ## Automated checks
 
-Lighthouse (desktop, v13.4.1, run locally by Dave on `index.html`):
+Lighthouse v13.4.1, run locally by Dave on `index.html` (served from a local dev server, so numbers are indicative, not production):
 
-| Performance | Accessibility | Best Practices | SEO |
-|---|---|---|---|
-| 97 | 100 | 100 | 100 |
+| | Performance | Accessibility | Best Practices | SEO |
+|---|---|---|---|---|
+| Desktop | 97 | 100 | 100 | 100 |
+| Mobile | 74 | 100 | 96 | 100 |
 
-Largest Contentful Paint 1.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.033. The only notes were an unminified stylesheet (no build step by design) and unused JavaScript that came from browser extensions, not the site. Lighthouse covers only the automated accessibility checks, so the trade-offs listed above still apply. A manual keyboard pass and an axe scan are separate from these results.
+- **Desktop:** Largest Contentful Paint 1.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.033.
+- **Mobile (simulated slow connection):** First Contentful Paint 2.5s, Largest Contentful Paint 6.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.045. The LCP element is the hero runners image (a 342KB PNG); the page also loads four render-blocking stylesheets and full-size background images on phones. Lighthouse also notes the header logo is low resolution on high-density screens (Best Practices 96).
+- **Not an issue for the site:** unused JavaScript came from browser extensions, and the unminified stylesheet is by design (no build step).
+- **Not yet done:** compressing the runners image (for example WebP with transparency), smaller mobile versions of the background images, and a 2x logo. A manual keyboard pass and an axe scan are separate from these results.
+
+Lighthouse covers only the automated accessibility checks, so the trade-offs listed above still apply.
 
 ## Structure
 
