@@ -22,7 +22,8 @@
   --gm-navy: #00537e;               /* teal gradient, dark end (from PSD) */
   --gm-dark: #2e2f31;               /* footer background (from PSD) */
   --gm-teal-text: #28a2be;          /* headline "WEIGHT LOSS" (from PSD) */
-  --gm-field-border: #e4e4e4;       /* form field border (from PSD) */
+  --gm-field-border: #e4e4e4;       /* form field border (from PSD); 1.27:1, fails 3:1 */
+  --gm-field-border-a11y: #8f8f8f;  /* darkened field border, 3.23:1 on white */
 
   --gm-font-heading: "Oswald", sans-serif;
   --gm-font-body: "Lato", sans-serif;
@@ -174,9 +175,21 @@ html {
 }
 
 @media (min-width: 992px) {
+  /* Divider "|" after Contact: a short rule, decorative only */
   .nav-phone {
-    border-inline-start: 1px solid var(--gm-ink);
+    position: relative;
     margin-inline-start: -0.5rem;
+  }
+
+  .nav-phone::before {
+    content: "";
+    position: absolute;
+    inset-block: 50% auto;
+    inset-inline-start: 0;
+    width: 1px;
+    height: 1.1em;
+    background: var(--gm-ink);
+    transform: translateY(-50%);
   }
 }
 
@@ -288,7 +301,7 @@ html {
 @media (min-width: 992px) {
   .hero {
     min-height: 670px;
-    padding-top: 12rem;
+    padding-top: 0;
   }
 
   .hero .row {
@@ -296,6 +309,7 @@ html {
   }
 
   .hero__copy {
+    padding-top: 9.75rem;
     padding-bottom: 9.6rem;
   }
 
@@ -313,6 +327,7 @@ html {
 .procedures {
   position: relative;
   z-index: 1;
+  display: flow-root;       /* stops the row's negative margin collapsing into margin-top */
   margin-top: -2.4rem;      /* cards overlap the hero's bottom edge */
   padding-bottom: 3rem;
 }
@@ -368,6 +383,147 @@ html {
   font-size: 0.875rem;       /* 8.33pt */
   letter-spacing: 0.1em;
   line-height: 1.2;
+}
+
+
+/* Contact
+   Panel and white card overlap by design; the airplane straddles both.
+   -------------------------------------------------------------------------- */
+.contact {
+  padding: 3rem 0 4rem;
+  background: #bcd8a0 url("../assets/contact-bg.jpg") center / cover no-repeat;
+}
+
+.contact__panel {
+  position: relative;
+  background: linear-gradient(200deg, rgba(0, 177, 197, 0.57), rgba(0, 83, 126, 0.57));
+  color: #fff;
+}
+
+.contact__intro {
+  padding: 2.5rem 1.5rem;
+}
+
+.contact__heading {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3.4rem);   /* 32.57pt */
+  letter-spacing: 0.06em;
+  line-height: 1.36;
+  text-transform: uppercase;
+}
+
+.contact__heading-light,
+.contact__heading-bold {
+  display: block;
+}
+
+.contact__heading-light {
+  font-weight: 300;
+}
+
+.contact__heading-bold {
+  font-weight: 700;
+}
+
+.contact__rule {
+  width: 9.7rem;
+  margin: 1.25rem 0 1.75rem;
+  border-top: 3px solid #fff;
+  opacity: 1;
+}
+
+.contact__text {
+  margin: 0;
+  font-size: 1.25rem;                    /* 12pt */
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+}
+
+.contact__card {
+  position: relative;
+  margin: 0 1.5rem -2rem;
+  padding: 1.75rem 1.5rem 2.25rem;
+  background: #fff;
+  color: var(--gm-ink);
+}
+
+.contact__card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact__card-title {
+  margin: 0;
+  font-size: clamp(2rem, 7vw, 3.4rem);   /* 32.57pt */
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  line-height: 1.36;
+  text-transform: uppercase;
+}
+
+.contact__phone {
+  color: var(--gm-phone);
+  font-family: var(--gm-font-heading);
+  font-size: 1.75rem;                    /* 16.8pt */
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+}
+
+.contact .form-control {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--gm-field-border-a11y);
+  border-radius: 0;
+  font-size: 1.125rem;                   /* 10.71pt */
+  letter-spacing: 0.12em;
+}
+
+.contact textarea.form-control {
+  min-height: 8.4rem;
+}
+
+/* Validation: keep the comp's neutral look instead of Bootstrap's green ticks */
+.was-validated .contact .form-control:valid {
+  border-color: var(--gm-field-border-a11y);
+  background-image: none;
+  padding-right: 1rem;
+}
+
+#formStatus:not(:empty) {
+  margin-top: 1.5rem;
+}
+
+.contact__plane {
+  position: absolute;
+  z-index: 2;
+  top: -9px;
+  left: 336px;
+}
+
+@media (min-width: 992px) {
+  .contact {
+    padding: 10.6rem 0 7.6rem;
+  }
+
+  .contact__panel {
+    display: flex;
+    min-height: 574px;
+  }
+
+  .contact__intro {
+    flex: 0 0 45%;
+    padding: 5.6rem 1.5rem 3rem 5.25rem;
+  }
+
+  .contact__card {
+    flex: 0 0 485px;
+    align-self: flex-start;
+    margin: 2.25rem 4.5rem -3.9rem auto;
+    padding: 1.75rem 2.8rem 2.5rem;
+  }
 }
 
 

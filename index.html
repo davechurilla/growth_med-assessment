@@ -26,7 +26,7 @@
     <nav id="mainNav" class="navbar navbar-expand-lg" aria-label="Main">
       <div class="container">
         <a class="brand" href="#top">
-          <img class="brand__mark" src="assets/logo-mark-orange.svg" alt="" width="75" height="75">
+          <img class="brand__mark" src="assets/logo_orange.png" alt="" width="76" height="77">
           <span class="brand__text"><span class="d-block">Weight Loss</span>Center</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,8 +62,7 @@
             <a class="btn btn-cta" href="#">Read more</a>
           </div>
           <div class="col-lg-6 hero__media">
-            <!-- width/height to be set from the exported file to prevent layout shift -->
-            <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side">
+            <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side" width="582" height="540">
           </div>
         </div>
       </div>
@@ -76,7 +75,7 @@
         <div class="row row-cols-1 row-cols-md-3 procedures__row">
           <div class="col">
             <article class="proc-card">
-              <img class="proc-card__icon" src="assets/icon-procedure-1.svg" alt="" width="135" height="135">
+              <img class="proc-card__icon" src="assets/icon-procedure-1.png" alt="" width="137" height="137">
               <h3 class="proc-card__title">One kind of weight loss procedure</h3>
               <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
               <a class="btn btn-pill" href="#">Learn more</a>
@@ -84,7 +83,7 @@
           </div>
           <div class="col">
             <article class="proc-card">
-              <img class="proc-card__icon" src="assets/icon-procedure-2.svg" alt="" width="135" height="135">
+              <img class="proc-card__icon" src="assets/icon-procedure-2.png" alt="" width="137" height="137">
               <h3 class="proc-card__title">Another weight loss procedure</h3>
               <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
               <a class="btn btn-pill" href="#">Learn more</a>
@@ -92,7 +91,7 @@
           </div>
           <div class="col">
             <article class="proc-card">
-              <img class="proc-card__icon" src="assets/icon-procedure-3.svg" alt="" width="135" height="135">
+              <img class="proc-card__icon" src="assets/icon-procedure-3.png" alt="" width="138" height="137">
               <h3 class="proc-card__title">A third weight loss procedure</h3>
               <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
               <a class="btn btn-pill" href="#">Learn more</a>
@@ -103,34 +102,43 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="py-5">
-      <div class="container py-lg-4">
-        <div class="row justify-content-center">
-          <div class="col-lg-7">
-            <h2 class="fw-bold mb-2">Get in touch</h2>
-            <p class="text-body-secondary mb-4">Short line about how soon people can expect a reply.</p>
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="contact__panel">
+          <img class="contact__plane d-none d-lg-block" src="assets/airplane.png" alt="" width="308" height="145">
+          <div class="contact__intro">
+            <h2 class="contact__heading"><span class="contact__heading-light">We are</span><span class="contact__heading-bold">Amazing!</span></h2>
+            <hr class="contact__rule">
+            <p class="contact__text">Aliquet platea elementum massa vel! Dis nascetur scelerisque vut integer placerat tincidunt porta tristique auctor sociis parturient porta! Platea magnis hac! Nunc. Etiam phasellus? Penatibus. Tristique tristique mauris?</p>
+          </div>
+          <div class="contact__card">
+            <div class="contact__card-head">
+              <h2 class="contact__card-title">Contact</h2>
+              <a class="contact__phone" href="tel:+18001234567">800.123.4567</a>
+            </div>
 
             <form id="contactForm" novalidate>
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label" for="name">Name</label>
-                  <input class="form-control" id="name" name="name" type="text" autocomplete="name" aria-describedby="nameError" required>
-                  <div class="invalid-feedback" id="nameError">Enter your name.</div>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label" for="email">Email</label>
-                  <input class="form-control" id="email" name="email" type="email" autocomplete="email" aria-describedby="emailError" required>
-                  <div class="invalid-feedback" id="emailError">Enter a valid email address.</div>
-                </div>
-                <div class="col-12">
-                  <label class="form-label" for="message">Message</label>
-                  <textarea class="form-control" id="message" name="message" rows="5" aria-describedby="messageError" required></textarea>
-                  <div class="invalid-feedback" id="messageError">Enter a message.</div>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-primary btn-lg" type="submit" id="submitBtn">Send message</button>
-                </div>
+              <!-- Labels are visually hidden to match the comp's placeholder-style fields; flagged in the README -->
+              <div class="mb-3">
+                <label class="visually-hidden" for="name">Name</label>
+                <input class="form-control" id="name" name="name" type="text" placeholder="Name" autocomplete="name" aria-describedby="nameError" required>
+                <div class="invalid-feedback" id="nameError">Enter your name.</div>
               </div>
+              <div class="mb-3">
+                <label class="visually-hidden" for="email">Email</label>
+                <input class="form-control" id="email" name="email" type="email" placeholder="Email" autocomplete="email" aria-describedby="emailError" required>
+                <div class="invalid-feedback" id="emailError">Enter a valid email address.</div>
+              </div>
+              <div class="mb-3">
+                <label class="visually-hidden" for="phone">Phone</label>
+                <input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone" autocomplete="tel">
+              </div>
+              <div class="mb-4">
+                <label class="visually-hidden" for="message">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Message" aria-describedby="messageError" required></textarea>
+                <div class="invalid-feedback" id="messageError">Enter a message.</div>
+              </div>
+              <button class="btn btn-cta" type="submit" id="submitBtn">Submit</button>
               <div id="formStatus" role="status"></div>
             </form>
           </div>
@@ -143,7 +151,7 @@
   <footer class="site-footer text-center">
     <div class="container">
       <a class="brand brand--light justify-content-center" href="#top">
-        <img class="brand__mark" src="assets/logo-mark-white.svg" alt="" width="60" height="60">
+        <img class="brand__mark" src="assets/logo_white.png" alt="" width="66" height="67">
         <span class="brand__text"><span class="d-block">Weight Loss</span>Center</span>
       </a>
       <p class="site-footer__address">1234 First Street, Suite 100 - Santa Monica, CA 90405 &nbsp;|&nbsp; <a href="tel:+18001234567">800.123.4567</a></p>
