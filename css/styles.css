@@ -231,6 +231,8 @@ h1, h2, h3, h4, h5, h6,
 .hero {
   padding-top: 10rem;
   background: #e8f1f6 url("../assets/hero-bg.jpg") center top / cover no-repeat;
+  /* WebP where supported; browsers without image-set() keep the JPG above */
+  background-image: image-set(url("../assets/hero-bg.webp") type("image/webp"), url("../assets/hero-bg.jpg") type("image/jpeg"));
 }
 
 .hero__copy {
@@ -482,6 +484,7 @@ h1, h2, h3, h4, h5, h6,
 .contact {
   padding: 3rem 0 4rem;
   background: #bcd8a0 url("../assets/contact-bg.jpg") center / cover no-repeat;
+  background-image: image-set(url("../assets/contact-bg.webp") type("image/webp"), url("../assets/contact-bg.jpg") type("image/jpeg"));
 }
 
 .contact__panel {
