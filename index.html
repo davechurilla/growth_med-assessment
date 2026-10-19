@@ -27,7 +27,7 @@
   <a class="visually-hidden-focusable skip-link position-absolute p-3 bg-body" href="#main">Skip to main content</a>
 
   <!-- The header overlays the hero image, so it is positioned over it rather than sticky -->
-  <header class="site-header">
+  <header class="site-header position-absolute top-0 start-0 w-100">
     <nav id="mainNav" class="navbar navbar-expand-lg" aria-label="Main">
       <div class="container">
         <a class="brand" href="#top">
@@ -57,8 +57,8 @@
     <!-- Hero -->
     <section id="top" class="hero">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-6 hero__copy">
+        <div class="row align-items-lg-end">
+          <div class="col-lg-6 hero__copy text-center text-lg-start">
             <div class="hero__slider" id="heroSlider">
               <div class="hero__slide">
                 <h1 class="hero__title">
@@ -83,16 +83,16 @@
                 <p class="hero__quote">&ldquo;Placeholder quote <span class="hero__quote-mark">second line here&rdquo;</span></p>
               </div>
             </div>
-            <div class="hero__controls" role="group" aria-label="Hero slides">
+            <div class="hero__controls d-flex align-items-center justify-content-center gap-1 mb-4 mb-lg-0" role="group" aria-label="Hero slides">
               <div class="hero__dots" id="heroDots"></div>
               <button class="hero__pause" id="heroPause" type="button" aria-label="Pause slide rotation"></button>
             </div>
             <a class="btn btn-cta" href="#">Read more</a>
           </div>
-          <div class="col-lg-6 hero__media">
+          <div class="col-lg-6 d-flex align-items-end justify-content-center justify-content-lg-end">
             <picture>
               <source srcset="assets/runners.webp" type="image/webp">
-              <img class="hero__runners" src="assets/runners.png" alt="A woman and a man jogging side by side" width="582" height="540" fetchpriority="high" decoding="async">
+              <img class="img-fluid d-block" src="assets/runners.png" alt="A woman and a man jogging side by side" width="582" height="540" fetchpriority="high" decoding="async">
             </picture>
           </div>
         </div>
@@ -100,12 +100,12 @@
     </section>
 
     <!-- Procedures -->
-    <section id="procedures" class="procedures" aria-labelledby="proceduresHeading">
+    <section id="procedures" class="procedures position-relative z-1" aria-labelledby="proceduresHeading">
       <div class="container">
         <h2 class="visually-hidden" id="proceduresHeading">Procedures</h2>
         <div class="row row-cols-1 row-cols-md-3 procedures__row">
           <div class="col">
-            <article class="proc-card">
+            <article class="proc-card h-100 text-center text-white">
               <img class="proc-card__icon" src="assets/icon-procedure-1.png" alt="" width="137" height="137">
               <h3 class="proc-card__title">One kind of weight loss procedure</h3>
               <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
@@ -115,7 +115,7 @@
             </article>
           </div>
           <div class="col">
-            <article class="proc-card">
+            <article class="proc-card h-100 text-center text-white">
               <img class="proc-card__icon" src="assets/icon-procedure-2.png" alt="" width="137" height="137">
               <h3 class="proc-card__title">Another weight loss procedure</h3>
               <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
@@ -125,7 +125,7 @@
             </article>
           </div>
           <div class="col">
-            <article class="proc-card">
+            <article class="proc-card h-100 text-center text-white">
               <img class="proc-card__icon" src="assets/icon-procedure-3.png" alt="" width="138" height="137">
               <h3 class="proc-card__title">A third weight loss procedure</h3>
               <p class="proc-card__text">Eros quis risus sociis phasellus tortor sit, pellentesque, tristique urna placerat? Turpis, magna velit placerat. Mid cum tempor nec, eu, pulvinar adipiscing turpis!</p>
@@ -141,15 +141,15 @@
     <!-- Contact -->
     <section id="contact" class="contact">
       <div class="container">
-        <div class="contact__panel">
-          <img class="contact__plane d-none d-lg-block" src="assets/airplane.png" alt="" width="308" height="145">
+        <div class="contact__panel position-relative text-white">
+          <img class="contact__plane position-absolute z-2 d-none d-lg-block" src="assets/airplane.png" alt="" width="308" height="145">
           <div class="contact__intro">
-            <h2 class="contact__heading"><span class="contact__heading-light">We are</span><span class="contact__heading-bold">Amazing!</span></h2>
+            <h2 class="contact__heading"><span class="d-block fw-light">We are</span><span class="d-block fw-bold">Amazing!</span></h2>
             <hr class="contact__rule">
             <p class="contact__text">Aliquet platea elementum massa vel! Dis nascetur scelerisque vut integer placerat tincidunt porta tristique auctor sociis parturient porta! Platea magnis hac! Nunc. Etiam phasellus? Penatibus. Tristique tristique mauris?</p>
           </div>
-          <div class="contact__card">
-            <div class="contact__card-head">
+          <div class="contact__card position-relative bg-white">
+            <div class="contact__card-head d-flex flex-wrap align-items-baseline mb-4">
               <h2 class="contact__card-title">Contact</h2>
               <a class="contact__phone" href="tel:+18001234567">800.123.4567</a>
             </div>
@@ -185,9 +185,9 @@
 
   </main>
 
-  <footer class="site-footer text-center">
+  <footer class="site-footer text-center text-white">
     <div class="container">
-      <a class="brand brand--light justify-content-center" href="#top">
+      <a class="brand justify-content-center text-white" href="#top">
         <img class="brand__mark" src="assets/logo_white.png" alt="" width="66" height="67">
         <span class="brand__text"><span class="d-block">Weight Loss</span>Center</span>
       </a>

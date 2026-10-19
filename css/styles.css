@@ -93,14 +93,12 @@ h1, h2, h3 {
 /* Header, nav and logo
    Type values come from the PSD (Photoshop pt x 1.667 at 120ppi = CSS px).
    -------------------------------------------------------------------------- */
+
+/* Slick gives the active slide z-index 1000, so the header (which overlays the
+   hero and holds the mobile menu) must sit above that. Bootstrap's z-3 is too low. */
 .site-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
   z-index: 1030;
 }
-
 .navbar {
   --bs-navbar-color: var(--gm-ink);
   --bs-navbar-hover-color: var(--gm-ink);
@@ -133,10 +131,6 @@ h1, h2, h3 {
   line-height: 1.2;
   text-transform: uppercase;
   text-decoration: none;
-}
-
-.brand--light {
-  color: #fff;
 }
 
 /* The footer is centered; keep the two logo lines left-aligned like the header */
@@ -258,7 +252,6 @@ h1, h2, h3 {
 
 .hero__copy {
   padding-bottom: 3rem;
-  text-align: center;       /* centered on phones/tablets, left-aligned from lg up */
 }
 
 .hero__title {
@@ -312,12 +305,7 @@ h1, h2, h3 {
 /* Dots + pause control. Beside the quote on desktop (as in the comp), below the
    text on smaller screens. Buttons are 28px so touch targets clear 24x24. */
 .hero__controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
   min-height: 1.75rem;           /* reserve the dots' height so Slick adding them doesn't shift the page */
-  margin-bottom: 1.5rem;
 }
 
 .hero__dots ul {
@@ -388,44 +376,22 @@ h1, h2, h3 {
   outline-offset: 2px;
 }
 
-.hero__media {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-}
-
-.hero__runners {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 @media (min-width: 992px) {
   .hero {
     min-height: 670px;
     padding-top: 0;
   }
 
-  .hero .row {
-    align-items: flex-end;
-  }
-
   .hero__copy {
     position: relative;
     padding-top: 9.75rem;
     padding-bottom: 9.6rem;
-    text-align: start;
   }
 
   .hero__controls {
     position: absolute;
     top: 21.25rem;              /* level with the quote, right of its first line */
     left: 24rem;
-    margin: 0;
-  }
-
-  .hero__media {
-    justify-content: flex-end;
   }
 }
 
@@ -436,8 +402,6 @@ h1, h2, h3 {
    cannot transition between two gradients directly.
    -------------------------------------------------------------------------- */
 .procedures {
-  position: relative;
-  z-index: 1;
   display: flow-root;       /* stops the row's negative margin collapsing into margin-top */
   margin-top: -2.4rem;      /* cards overlap the hero's bottom edge */
   padding-bottom: 3rem;
@@ -451,12 +415,9 @@ h1, h2, h3 {
 .proc-card {
   position: relative;
   isolation: isolate;
-  height: 100%;
   padding: 2.6rem 2.5rem 2.8rem;
   border-radius: 45px 55px 75px 0;
   background: var(--gm-grad-teal);
-  color: #fff;
-  text-align: center;
 }
 
 .proc-card::before {
@@ -509,9 +470,7 @@ h1, h2, h3 {
 }
 
 .contact__panel {
-  position: relative;
   background: linear-gradient(200deg, rgba(0, 177, 197, 0.57), rgba(0, 83, 126, 0.57));
-  color: #fff;
 }
 
 .contact__intro {
@@ -524,19 +483,6 @@ h1, h2, h3 {
   letter-spacing: 0.06em;
   line-height: 1.36;
   text-transform: uppercase;
-}
-
-.contact__heading-light,
-.contact__heading-bold {
-  display: block;
-}
-
-.contact__heading-light {
-  font-weight: 300;
-}
-
-.contact__heading-bold {
-  font-weight: 700;
 }
 
 .contact__rule {
@@ -554,19 +500,13 @@ h1, h2, h3 {
 }
 
 .contact__card {
-  position: relative;
   margin: 0 1.5rem -2rem;
   padding: 1.75rem 1.5rem 2.25rem;
-  background: #fff;
   color: var(--gm-ink);
 }
 
 .contact__card-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
   column-gap: 1.25rem;
-  margin-bottom: 1.5rem;
 }
 
 .contact__card-title {
@@ -611,8 +551,6 @@ h1, h2, h3 {
 }
 
 .contact__plane {
-  position: absolute;
-  z-index: 2;
   top: -9px;
   left: 336px;
 }
@@ -646,7 +584,6 @@ h1, h2, h3 {
 .site-footer {
   padding: 3rem 0 2.5rem;
   background: var(--gm-dark);
-  color: #fff;
   font-family: var(--gm-font-body);
 }
 
