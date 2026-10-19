@@ -15,7 +15,7 @@ and meet **WCAG 2.2 AA**.
 ## Files
 - `index.html`: the page
 - `css/styles.css`: brand tokens, Bootstrap variable mappings, hover/motion polish
-- `js/main.js`: navbar shadow, mobile menu close, form validation/submit, footer year
+- `js/main.js`: mobile menu close, form validation/submit (demo mode), hero slider
 - `design/`: client comps and exported assets (reference only, do not edit)
 - `assets/`: optimized images, fonts, and icons used by the page
 
