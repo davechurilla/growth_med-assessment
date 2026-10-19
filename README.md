@@ -43,10 +43,10 @@ Lighthouse v13.4.1, run locally by Dave on `index.html` (served from a local dev
 | | Performance | Accessibility | Best Practices | SEO |
 |---|---|---|---|---|
 | Desktop | 100 | 100 | 96 (before the 2x logos) | 100 |
-| Mobile | 88 | 100 | 100 | 100 |
+| Mobile | 92 | 100 | 100 | 100 |
 
 - **Desktop:** First Contentful Paint 0.5s, Largest Contentful Paint 0.7s, Total Blocking Time 0ms, Cumulative Layout Shift 0.004.
-- **Mobile:** First Contentful Paint 2.4s, Largest Contentful Paint 3.5s, Total Blocking Time 0ms, Cumulative Layout Shift 0.003. Mobile Performance varied between 88 and 96 across runs on essentially the same page (the largest image loads in about 0.25s in every run); the difference tracks how quickly the CDN-hosted stylesheets arrive. The first mobile run scored 74 with a 6.1s LCP; converting the runners image and both backgrounds to WebP (with JPG/PNG fallbacks), fetching the runners image early, and adding a size-matched fallback for the Oswald web font (which removed a layout shift when the font loaded) did most of the work.
+- **Mobile:** First Contentful Paint 1.9s, Largest Contentful Paint 3.2s, Total Blocking Time 0ms, Cumulative Layout Shift 0.003. Mobile Performance varied between 92 and 96 across runs on essentially the same page (the largest image loads in about 0.25s in every run); the difference tracks how quickly the CDN-hosted stylesheets arrive. The first mobile run scored 74 with a 6.1s LCP; converting the runners image and both backgrounds to WebP (with JPG/PNG fallbacks), fetching the runners image early, and adding a size-matched fallback for the Oswald web font (which removed a layout shift when the font loaded) did most of the work.
 - **Fixed:** the header logo was a 1x image that Lighthouse flagged as low-resolution; both logos now have 2x versions served through `srcset`, and mobile Best Practices went from 96 to 100.
 - **Remaining notes:** Lighthouse lists render-blocking stylesheets (Bootstrap, Slick, Google Fonts, the page CSS), unused Bootstrap CSS, and some image savings. The unminified stylesheet is by design (no build step).
 
