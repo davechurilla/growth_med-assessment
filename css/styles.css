@@ -161,6 +161,28 @@ h1, h2, h3 {
     background: var(--gm-ink);
     transform: translateY(-50%);
   }
+
+  /* Nav links: orange underline (hover and motion are in section 3) */
+  .navbar .nav-link {
+    position: relative;
+  }
+
+  .navbar .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: var(--bs-nav-link-padding-x);
+    bottom: 0.25rem;
+    height: 2px;
+    background: var(--gm-accent);
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+
+  /* Current page and keyboard focus always show the underline */
+  .navbar .nav-link.active::after,
+  .navbar .nav-link:focus-visible::after {
+    transform: scaleX(1);
+  }
 }
 
 /* Mobile menu needs its own background over the hero image */
@@ -650,37 +672,36 @@ h1, h2, h3 {
   letter-spacing: 0.12em;
 }
 
+.social-link {
+  display: inline-block;
+}
+
 
 /* 3. Hover and motion polish
    --------------------------------------------------------------------------
-   Rules of thumb used below:
    - Hover effects only apply on devices that can hover, so touch screens
      don't get "stuck" hover states.
    - Anything that moves is switched off for visitors who ask for reduced
      motion. Color and shadow changes still apply for them.
    -------------------------------------------------------------------------- */
 
-/* Nav links: underline slides in (desktop only; the mobile menu stays simple) */
-@media (min-width: 992px) {
-  .navbar .nav-link {
-    position: relative;
+@media (hover: hover) {
+  .btn-pill:hover,
+  .btn-cta:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
   }
 
-  .navbar .nav-link::after {
-    content: "";
-    position: absolute;
-    inset-inline: var(--bs-nav-link-padding-x);
-    bottom: 0.25rem;
-    height: 2px;
-    background: var(--gm-accent);
-    transform: scaleX(0);
-    transform-origin: left center;
+  .btn-cta:hover::before {
+    opacity: 1;
   }
 
-  /* Current page and keyboard focus always show the underline */
-  .navbar .nav-link.active::after,
-  .navbar .nav-link:focus-visible::after {
-    transform: scaleX(1);
+  /* The whole card turns orange on hover; the button has its own hover effect */
+  .proc-card:hover::before {
+    opacity: 1;
+  }
+
+  .social-link:hover {
+    opacity: 0.7;
   }
 }
 
@@ -688,17 +709,16 @@ h1, h2, h3 {
   .navbar .nav-link:hover::after {
     transform: scaleX(1);
   }
-}
 
-/* Motion: transitions plus the transforms that use them */
-@media (prefers-reduced-motion: no-preference) {
-  .navbar .nav-link::after {
-    transition: transform var(--gm-speed) var(--gm-ease);
+  /* The nav phone number is a plain tel: link: no hover underline
+     (keyboard focus keeps its underline and ring) */
+  .navbar .nav-phone .nav-link:hover:not(:focus-visible)::after {
+    transform: scaleX(0);
   }
 }
 
+/* Every button grows slightly toward the viewer (the shadow is above) */
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  /* Every button grows slightly toward the viewer (shadow is added below) */
   .btn:hover:not(:disabled) {
     transform: scale(1.08);
   }
@@ -708,24 +728,12 @@ h1, h2, h3 {
   }
 }
 
-/* Hover and transitions for the comp's buttons, nav and procedure cards */
-@media (hover: hover) {
-  .btn-pill:hover,
-  .btn-cta:hover {
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
-  }
-
-  /* The whole card turns orange on hover; the button has its own hover effect */
-  .proc-card:hover::before {
-    opacity: 1;
-  }
-
-  .btn-cta:hover::before {
-    opacity: 1;
-  }
-}
-
+/* Transitions */
 @media (prefers-reduced-motion: no-preference) {
+  .navbar .nav-link::after {
+    transition: transform var(--gm-speed) var(--gm-ease);
+  }
+
   .proc-card::before {
     transition: opacity 300ms var(--gm-ease);
   }
@@ -747,28 +755,7 @@ h1, h2, h3 {
       box-shadow var(--gm-speed) var(--gm-ease),
       transform var(--gm-speed) var(--gm-ease);
   }
-}
 
-/* The nav phone number is a plain tel: link: no hover underline.
-   (Keyboard focus keeps its underline and ring.) */
-@media (min-width: 992px) and (hover: hover) {
-  .navbar .nav-phone .nav-link:hover:not(:focus-visible)::after {
-    transform: scaleX(0);
-  }
-}
-
-/* Social icons: dim slightly on hover */
-.social-link {
-  display: inline-block;
-}
-
-@media (hover: hover) {
-  .social-link:hover {
-    opacity: 0.7;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
   .social-link {
     transition: opacity var(--gm-speed) var(--gm-ease);
   }
