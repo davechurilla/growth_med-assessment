@@ -19,38 +19,36 @@
 }
 
 
-/* 1. Brand tokens
+/* 1. Brand tokens (PSD values unless noted) and Bootstrap mappings
    -------------------------------------------------------------------------- */
 :root {
-  --gm-primary: #0679a4;            /* focus rings and Bootstrap's default link color */
+  /* Color */
+  --gm-primary: #0679a4;            /* focus rings, link color, button hover; white text 4.91:1 */
   --gm-primary-rgb: 6, 121, 164;    /* same color as above, as r, g, b */
+  --gm-accent: #de5630;             /* orange: nav underline, gradient dark end */
+  --gm-orange-light: #ea8b51;       /* orange gradient, light end */
+  --gm-teal: #00b1c5;               /* teal gradient, light end */
+  --gm-navy: #00537e;               /* teal gradient, dark end; "Learn more" text */
+  --gm-teal-text: #28a2be;          /* headline "WEIGHT LOSS" */
+  --gm-dark: #2e2f31;               /* footer background */
+  --gm-ink: #1d1d1b;                /* APPROXIMATE: body/nav text */
+  --gm-phone: #237ba2;              /* nav phone number: darkened from PSD #73bfdc (2.06:1) to 4.74:1 */
+  --gm-field-border: #8f8f8f;       /* form field border: darkened from PSD #e4e4e4 (1.27:1) to 3.23:1 */
+  --gm-grad-teal: linear-gradient(200deg, var(--gm-teal), var(--gm-navy));
+  --gm-grad-orange: linear-gradient(200deg, var(--gm-orange-light), var(--gm-accent));
 
-  --gm-accent: #de5630;             /* orange: nav underline, button gradient start (= dark end of the orange gradient) */
-  --gm-orange-light: #ea8b51;       /* orange gradient, light end (from PSD) */
-  --gm-teal: #00b1c5;               /* teal gradient, light end (from PSD) */
-  --gm-navy: #00537e;               /* teal gradient, dark end (from PSD) */
-  --gm-dark: #2e2f31;               /* footer background (from PSD) */
-  --gm-teal-text: #28a2be;          /* headline "WEIGHT LOSS" (from PSD) */
-  --gm-field-border: #e4e4e4;       /* form field border (from PSD); 1.27:1, fails 3:1 */
-  --gm-field-border-a11y: #8f8f8f;  /* darkened field border, 3.23:1 on white */
-
+  /* Type */
   --gm-font-heading: "Oswald", "Oswald Fallback", sans-serif;
   --gm-font-body: "Lato", sans-serif;
+
+  /* Layout and motion */
   --gm-wrapper: 1200px;             /* client spec: 1200px wide, 30px side padding */
   --gm-wrapper-pad: 30px;
-
   --gm-speed: 200ms;
   --gm-ease: cubic-bezier(0.2, 0.6, 0.2, 1);
-}
 
-
-/* 2. Map tokens onto Bootstrap
-   -------------------------------------------------------------------------- */
-:root {
-  --bs-primary: var(--gm-primary);
-  --bs-primary-rgb: var(--gm-primary-rgb);
+  /* Bootstrap mappings */
   --bs-link-color-rgb: var(--gm-primary-rgb);
-
   --bs-body-font-family: var(--gm-font-body);
   --bs-heading-font-family: var(--gm-font-heading);
 }
@@ -71,8 +69,7 @@
   max-width: var(--gm-wrapper);
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
+h1, h2, h3 {
   font-family: var(--bs-heading-font-family);
 }
 
@@ -96,16 +93,6 @@ h1, h2, h3, h4, h5, h6,
 /* Header, nav and logo
    Type values come from the PSD (Photoshop pt x 1.667 at 120ppi = CSS px).
    -------------------------------------------------------------------------- */
-:root {
-  --gm-ink: #1d1d1b;        /* APPROXIMATE: body/nav text */
-  --gm-phone: #237ba2;      /* nav phone number: darkened from PSD #73bfdc (2.06:1) to 4.74:1 on white */
-  --gm-orange-dark: #de5630; /* orange gradient, dark end (from PSD) */
-  --gm-btn-hover: #0679a4;  /* lighter blue hover for the card buttons; white text 4.91:1 */
-  --gm-btn-teal: #00537e;   /* "Learn more" button text on teal cards (from PSD) */
-  --gm-grad-teal: linear-gradient(200deg, var(--gm-teal), var(--gm-navy));
-  --gm-grad-orange: linear-gradient(200deg, var(--gm-orange-light), var(--gm-orange-dark));
-}
-
 .site-header {
   position: absolute;
   top: 0;
@@ -219,14 +206,14 @@ h1, h2, h3, h4, h5, h6,
   inset: 0;
   z-index: -1;
   border-radius: inherit;
-  background: var(--gm-btn-hover);
+  background: var(--gm-primary);
   opacity: 0;
 }
 
 /* White pill on the procedure cards */
 .btn-pill {
   --bs-btn-bg: #fff;
-  --bs-btn-color: var(--gm-btn-teal);
+  --bs-btn-color: var(--gm-navy);
   --bs-btn-hover-bg: #fff;
   --bs-btn-hover-color: var(--gm-accent);
   --bs-btn-active-bg: #fff;
@@ -317,10 +304,6 @@ h1, h2, h3, h4, h5, h6,
   margin: 0;
   padding: 0;
   list-style: none;
-}
-
-.hero__dots li {
-  margin: 0;
 }
 
 .hero__dots button,
@@ -584,7 +567,7 @@ h1, h2, h3, h4, h5, h6,
 
 .contact .form-control {
   padding: 0.55rem 1rem;
-  border: 1px solid var(--gm-field-border-a11y);
+  border: 1px solid var(--gm-field-border);
   border-radius: 0;
   font-size: 1.125rem;                   /* 10.71pt */
   letter-spacing: 0.12em;
@@ -596,7 +579,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Validation: keep the comp's neutral look instead of Bootstrap's green ticks */
 .was-validated .contact .form-control:valid {
-  border-color: var(--gm-field-border-a11y);
+  border-color: var(--gm-field-border);
   background-image: none;
   padding-right: 1rem;
 }
@@ -711,16 +694,6 @@ h1, h2, h3, h4, h5, h6,
 @media (prefers-reduced-motion: no-preference) {
   .navbar .nav-link::after {
     transition: transform var(--gm-speed) var(--gm-ease);
-  }
-
-  /* Bootstrap's own button transitions, plus transform */
-  .btn {
-    transition:
-      color 0.15s ease-in-out,
-      background-color 0.15s ease-in-out,
-      border-color 0.15s ease-in-out,
-      box-shadow 0.15s ease-in-out,
-      transform var(--gm-speed) var(--gm-ease);
   }
 }
 
