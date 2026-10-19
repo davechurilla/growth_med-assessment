@@ -38,16 +38,16 @@ This project is a development assessment by Dave Churilla, prepared for Steven F
 
 ## Automated checks
 
-Lighthouse v13.4.1, run locally by Dave on `index.html` (served from a local dev server, so numbers are indicative, not production):
+Lighthouse v13.4.1, run locally by Dave on `index.html` (served from a local dev server with Lighthouse's simulated throttling, so numbers are indicative, not production). Latest runs:
 
 | | Performance | Accessibility | Best Practices | SEO |
 |---|---|---|---|---|
-| Desktop | 97 | 100 | 96-100 | 100 |
-| Mobile | 96 | 100 | 96 | 100 |
+| Desktop | 100 | 100 | 96 | 100 |
+| Mobile | 92 | 100 | 96 | 100 |
 
-- **Desktop:** Largest Contentful Paint 1.1s, Total Blocking Time 0ms, Cumulative Layout Shift 0.033.
-- **Mobile (simulated slow connection):** First Contentful Paint 1.7s, Largest Contentful Paint 2.7s, Total Blocking Time 0ms, Cumulative Layout Shift 0. A first mobile run scored 74 with a 6.1s LCP. Converting the runners image and both backgrounds to WebP (with JPG/PNG fallbacks), fetching the runners image early, and adding a size-matched fallback for the Oswald web font (which removed a layout shift when the font loaded) brought it to 96.
-- **Remaining notes:** Best Practices 96 is the header logo, which is a 1x image and looks low-resolution on high-density screens (a 2x export or SVG would fix it). Lighthouse also lists render-blocking stylesheets (Bootstrap, Slick, Google Fonts, the page CSS) and small image savings on the icons. Unused JavaScript in the reports came from browser extensions, and the unminified stylesheet is by design (no build step).
+- **Desktop:** First Contentful Paint 0.5s, Largest Contentful Paint 0.7s, Total Blocking Time 0ms, Cumulative Layout Shift 0.004.
+- **Mobile:** First Contentful Paint 1.9s, Largest Contentful Paint 3.2s, Total Blocking Time 0ms, Cumulative Layout Shift 0. Mobile scores vary a few points from run to run on the same code (an earlier run scored 96 with a 2.7s LCP). The first mobile run scored 74 with a 6.1s LCP; converting the runners image and both backgrounds to WebP (with JPG/PNG fallbacks), fetching the runners image early, and adding a size-matched fallback for the Oswald web font (which removed a layout shift when the font loaded) did most of the work.
+- **Remaining notes:** Best Practices 96 is the header logo, a 1x image that looks low-resolution on high-density screens (a 2x export or SVG would fix it). Lighthouse also lists render-blocking stylesheets (Bootstrap, Slick, Google Fonts, the page CSS), unused Bootstrap CSS, and some image savings. The unminified stylesheet is by design (no build step).
 
 Lighthouse covers only the automated accessibility checks, so the trade-offs listed above still apply. A manual keyboard pass and an axe scan are separate from these results.
 
