@@ -79,6 +79,10 @@
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let paused = reduceMotion;
 
+    // Slick makes the current slide focusable; it holds no controls, so keep it out of the tab order.
+    // Slick sets tabindex right after firing these events, hence the timeout.
+    $slider.on('init afterChange', () => setTimeout(() => $slider.find('.slick-slide').removeAttr('tabindex')));
+
     $slider.slick({
       fade: true,
       speed: reduceMotion ? 0 : 700,

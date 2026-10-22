@@ -79,8 +79,21 @@ h1, h2, h3 {
   box-shadow: 0 0 0 0.25rem rgba(var(--gm-primary-rgb), 0.25);
 }
 
+/* Solid ring: the 25% tint was the only cue in the mobile menu (about 1.3:1) */
 .nav-link:focus-visible {
-  box-shadow: 0 0 0 0.25rem rgba(var(--gm-primary-rgb), 0.25);
+  box-shadow: 0 0 0 2px var(--gm-primary);
+}
+
+/* Bootstrap's .btn ring needs --bs-btn-focus-shadow-rgb, which only its own
+   variants set, so the custom buttons had no focus indicator at all */
+.btn-cta:focus-visible,
+.btn-pill:focus-visible {
+  outline: 3px solid var(--gm-ink);
+  outline-offset: 3px;
+}
+
+.proc-card .btn-pill:focus-visible {
+  outline-color: #fff;
 }
 
 /* Skip link sits above the header when focused */
@@ -256,7 +269,7 @@ h1, h2, h3 {
 
 .hero__title {
   margin: 0;
-  font-family: var(--gm-font-heading);    /* slides 2-3 use <p>, so set it here too */
+  font-family: var(--gm-font-heading);    /* the titles are <p>s (the h1 is outside the slider) */
   font-size: clamp(2rem, 6vw, 3.15rem);   /* 30.22pt */
   font-weight: 300;
   letter-spacing: 0.06em;
@@ -296,10 +309,6 @@ h1, h2, h3 {
 /* Slider: before Slick starts (or without JS) only the first slide shows */
 .hero__slider:not(.slick-initialized) .hero__slide:not(:first-child) {
   display: none;
-}
-
-.hero__slide:focus {
-  outline: 0;
 }
 
 /* Dots + pause control. Beside the quote on desktop (as in the comp), below the
@@ -533,6 +542,12 @@ h1, h2, h3 {
   border-radius: 0;
   font-size: 1.125rem;                   /* 10.71pt */
   letter-spacing: 0.12em;
+}
+
+/* The border shorthand above overrides Bootstrap's focus border, so restate it */
+.contact .form-control:focus {
+  border-color: var(--gm-primary);
+  box-shadow: 0 0 0 2px var(--gm-primary);
 }
 
 .contact textarea.form-control {

@@ -59,12 +59,14 @@
       <div class="container">
         <div class="row align-items-lg-end">
           <div class="col-lg-6 hero__copy text-center text-lg-start">
+            <!-- The h1 sits outside the slider: Slick hides inactive slides from assistive tech -->
+            <h1 class="visually-hidden">Leading the field in weight loss surgery</h1>
             <div class="hero__slider" id="heroSlider">
               <div class="hero__slide">
-                <h1 class="hero__title">
+                <p class="hero__title" aria-hidden="true">
                   <span class="hero__title-line">Leading the field in</span>
                   <span class="hero__title-line"><span class="hero__title-accent">Weight Loss</span> Surgery</span>
-                </h1>
+                </p>
                 <p class="hero__quote">&ldquo;Before I was alive <span class="hero__quote-mark">and now im living&rdquo;</span></p>
               </div>
               <!-- Slides 2 and 3: placeholder copy until the client supplies text -->
@@ -103,7 +105,7 @@
     <section id="procedures" class="procedures position-relative z-1" aria-labelledby="proceduresHeading">
       <div class="container">
         <h2 class="visually-hidden" id="proceduresHeading">Procedures</h2>
-        <div class="row row-cols-1 row-cols-md-3 procedures__row">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 justify-content-center procedures__row">
           <div class="col">
             <article class="proc-card h-100 text-center text-white">
               <img class="proc-card__icon" src="assets/icon-procedure-1.png" alt="" width="137" height="137">
